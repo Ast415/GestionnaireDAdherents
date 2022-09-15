@@ -1,5 +1,7 @@
 package com.btssio.projet1.classe;
 
+import java.util.ArrayList;
+
 public class Club {
 	private int id;
 	private String nom;
@@ -8,6 +10,7 @@ public class Club {
 	private String tel;
 	private String mail;
 	private String site;
+	private ArrayList<Adherent> listAdherent;
 
 	public synchronized int getId() {
 		return id;
@@ -35,6 +38,14 @@ public class Club {
 
 	public synchronized String getSite() {
 		return site;
+	}
+
+	public synchronized ArrayList<Adherent> getListAdherent() {
+		return listAdherent;
+	}
+
+	public synchronized void setListAdherent(ArrayList<Adherent> listAdherent) {
+		this.listAdherent = listAdherent;
 	}
 
 	public synchronized void setId(int id) {
@@ -74,6 +85,15 @@ public class Club {
 		this.tel = tel;
 		this.mail = mail;
 		this.site = site;
+	}
+
+	public boolean addAdherent(Adherent newAdherent) {
+		this.listAdherent.add(newAdherent);
+		return this.listAdherent.contains(newAdherent);
+	}
+
+	public boolean supAdherent(Adherent supAdherent) {
+		return this.listAdherent.remove(supAdherent);
 	}
 
 }
