@@ -14,6 +14,9 @@ public class Adherent {
 	private String nationalité;
 	private String numeroDeTelephone1;
 	private String numeroDeTelephone2;
+	private String arme;
+	private String pratique;
+	private String lateralité;
 	
 	public String getNom() {
 		return nom;
@@ -87,11 +90,29 @@ public class Adherent {
 	public void setNumeroDeTelephone2(String numeroDeTelephone2) {
 		this.numeroDeTelephone2 = numeroDeTelephone2;
 	}
+	public String getArme() {
+		return arme;
+	}
+	public void setArme(String arme) {
+		this.arme = arme;
+	}
+	public String getPratique() {
+		return pratique;
+	}
+	public void setPratique(String pratique) {
+		this.pratique = pratique;
+	}
+	public String getLateralité() {
+		return lateralité;
+	}
+	public void setLateralité(String lateralité) {
+		this.lateralité = lateralité;
+	}
 	
 	
 	public Adherent(String nom, String prenom, String genre, String dateDeNaissance, String villeDeNaissance,
 			String nomDeNaissance, String ville, String adresse, int cp, String nationalité, String numeroDeTelephone1,
-			String numeroDeTelephone2) {
+			String numeroDeTelephone2, String arme, String pratique, String lateralité) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -105,8 +126,10 @@ public class Adherent {
 		this.nationalité = nationalité;
 		this.numeroDeTelephone1 = numeroDeTelephone1;
 		this.numeroDeTelephone2 = numeroDeTelephone2;
+		this.arme = arme;
+		this.pratique = pratique;
+		this.lateralité = lateralité;
 	}
-	
 	public void SePresenter() {
 		System.out.println("Je suis "+this.nom+" "+this.prenom);
 	}
