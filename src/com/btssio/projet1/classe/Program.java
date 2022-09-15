@@ -14,7 +14,10 @@ public class Program {
 				31400,
 				"Fr",
 				"0781878897",
-				"");
+				"0000000000",
+				"Epee",
+				"Escrime",
+				"Droitier");
 		System.out.println(Adh1.getCp());
 		Adh1.SePresenter();
 	}
