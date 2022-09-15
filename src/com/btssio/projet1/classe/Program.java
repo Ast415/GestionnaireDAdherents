@@ -15,7 +15,8 @@ public class Program {
 				"Fr",
 				"0781878897",
 				"");
-		System.out.println(Adh1.getNom());
+		System.out.println(Adh1.getCp());
+		Adh1.SePresenter();
 	}
 
 }

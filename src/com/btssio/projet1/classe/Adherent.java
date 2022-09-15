@@ -107,7 +107,9 @@ public class Adherent {
 		this.numeroDeTelephone2 = numeroDeTelephone2;
 	}
 	
-	
+	public void SePresenter() {
+		System.out.println("Je suis "+this.nom+" "+this.prenom);
+	}
 	
 
 }
