@@ -49,6 +49,9 @@ public class lectureXML {
 		} catch (IOException e) {
 			System.out.println(e);
 		}
+		/*
+		 * for (Club elem : lesClub) { System.out.println(elem.getId()); }
+		 */
 		return lesClub;
 	}
 
