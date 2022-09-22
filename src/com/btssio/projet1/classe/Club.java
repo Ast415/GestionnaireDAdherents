@@ -87,6 +87,11 @@ public class Club {
 		this.site = site;
 	}
 
+	public Club(int id) {
+		super();
+		this.id = id;
+	}
+
 	public boolean addAdherent(Adherent newAdherent) {
 		this.listAdherent.add(newAdherent);
 		return this.listAdherent.contains(newAdherent);
