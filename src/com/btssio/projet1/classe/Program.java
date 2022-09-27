@@ -1,7 +1,13 @@
 package com.btssio.projet1.classe;
 
+import java.util.ArrayList;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
 public class Program {
-	public static void main(String[]args) {
+	public static void main(String[]args) throws ParserConfigurationException, SAXException {
 		Adherent Adh1 = new Adherent(
 				"BORIES",
 				"Bastien",
@@ -18,8 +24,9 @@ public class Program {
 				"Epee",
 				"Escrime",
 				"Droitier");
-		System.out.println(Adh1.getCp());
-		Adh1.SePresenter();
+		ArrayList<Club> lesClub = new ArrayList();
+		lesClub = lectureXML.importationXMLClub();
+		for (Club elem : lesClub) { System.out.print(elem.getNom()+", "); }
 	}
 
 }
