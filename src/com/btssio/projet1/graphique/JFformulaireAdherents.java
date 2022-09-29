@@ -60,10 +60,10 @@ public class JFformulaireAdherents extends JFrame {
 	private final ButtonGroup bgrAssurence = new ButtonGroup();
 	private final ButtonGroup bgrReducFamille = new ButtonGroup();
 	private final ButtonGroup bgrSeanceTir = new ButtonGroup();
+	private final ButtonGroup bgrPratique = new ButtonGroup();
 	
 	private List<JTextField> LesTxtfASaisir = new ArrayList<JTextField>();
 	private boolean formulaireComplete;
-	private final ButtonGroup bgrPratique = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -100,6 +100,7 @@ public class JFformulaireAdherents extends JFrame {
 		LesTxtfASaisir.add(txtfAdhTel1);
 		LesTxtfASaisir.add(txtfAdhCourriel);
 		LesTxtfASaisir.add(txtfAdhNationalite);
+		
 	}
 	
 	
@@ -112,7 +113,7 @@ public class JFformulaireAdherents extends JFrame {
 		}
 	}
 	
-	public boolean BonneTaille(JTextField UnChampDeText, int LaTailleMin, int LaTailleMax) {
+	public boolean bonneTaille(JTextField UnChampDeText, int LaTailleMin, int LaTailleMax) {
 		if(UnChampDeText.getText().length()<LaTailleMin || UnChampDeText.getText().length()>LaTailleMax) {
 			return false;
 		}else {
@@ -121,19 +122,80 @@ public class JFformulaireAdherents extends JFrame {
 		
 	}
 	
-	public void informationComplete(JTextField UnChampDeText) {
-		if (UnChampDeText.getText().equals("")){//Si les champ est vide
-			//JOptionPane.showMessageDialog(UnChampDeText,"Il n'y a rien de saisi dans ce champ.");
-			UnChampDeText.setBackground(Color.RED);//Change la couleur de l'arriere plan pour indiquer l'erreur
-			UnChampDeText.addMouseListener(new MouseAdapter() {//Si on clique sur la zone de texte ciblé
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					UnChampDeText.setBackground(Color.WHITE);//Alors elle redivent blanche
-				}
-			});
-			formulaireComplete = false;
+	public boolean valeurMinMax(JTextField UnChampDeText, int LaTailleMin, int LaTailleMax) {
+		if(Integer.valueOf(UnChampDeText.getText())<LaTailleMin || Integer.valueOf(UnChampDeText.getText())>LaTailleMax) {
+			return false;
+		}else {
+			return true;
 		}
 	}
+	
+	public boolean tousDeBonneTaille() {
+		boolean verification;
+		verification = bonneTaille(txtfAdhCP,5,5);
+		if (verification == true) {
+			verification = bonneTaille(txtfAdhDateNaissJ,1,2);
+		}
+		if (verification == true) {
+			verification = bonneTaille(txtfAdhDateNaissM,1,2);
+		}
+		if (verification == true) {
+			verification = bonneTaille(txtfAdhDateNaissA,4,4);
+		}
+		if (verification == true) {
+			verification = bonneTaille(txtfAdhTel1,10,10);
+		}
+		
+		return verification;
+	}
+	
+	public boolean tousOnUneBonneValeur() {
+		boolean verification;
+		verification = valeurMinMax(txtfAdhDateNaissJ,1,31);
+		if (verification == true) {
+			verification = valeurMinMax(txtfAdhDateNaissM,1,12);
+		}
+		if (verification == true) {
+			verification = valeurMinMax(txtfAdhDateNaissA,1900,2100);
+		}
+		return verification;
+	}
+
+	public boolean verificationFormulaire() {
+		boolean verification;
+		verification=informationComplete();
+		if (verification == true) {
+			verification=tousDeBonneTaille();
+		}
+		if (verification == true) {
+			verification=tousOnUneBonneValeur();
+		}
+		return verification;
+	}
+	
+	public boolean informationComplete() {
+		formulaireComplete = true;
+		for( Component comp : contentPane.getComponents()) {//comp sera a tour de role associer a chaque composent du formulaire
+			if( comp instanceof JTextField) {//Si comp est un element JTextField (les zone de saisie de texte)
+				if (LesTxtfASaisir.contains((JTextField)comp)) {
+					JTextField UnChampDeText = (JTextField)comp;
+					if (UnChampDeText.getText().equals("")){//Si les champ est vide
+						//JOptionPane.showMessageDialog(UnChampDeText,"Il n'y a rien de saisi dans ce champ.");
+						UnChampDeText.setBackground(Color.RED);//Change la couleur de l'arriere plan pour indiquer l'erreur
+						UnChampDeText.addMouseListener(new MouseAdapter() {//Si on clique sur la zone de texte ciblé
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								UnChampDeText.setBackground(Color.WHITE);//Alors elle redivent blanche
+							}
+						});
+						formulaireComplete = false;
+					}
+				}
+			}
+		}
+		return formulaireComplete;
+	}
+	
 	
 	public boolean informationCorrecte(JTextField UnChampDeText) {
 		return true;
@@ -470,13 +532,17 @@ public class JFformulaireAdherents extends JFrame {
 		JButton btnNewButton = new JButton("Valider");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				init();
+				JOptionPane.showMessageDialog(contentPane,verificationFormulaire());
+
 				
-				JOptionPane.showMessageDialog(contentPane,BonneTaille(txtfAdhCP,5,5));
+				
+				
+				
+				//JOptionPane.showMessageDialog(contentPane,bonneTaille(txtfAdhCP,5,5));
 				
 				//Verifie que les champ sont bien saisi
-				for( Component comp : contentPane.getComponents()) {/*comp sera a tour de role associer a chaque composent du formulaire*/
-					if( comp instanceof JTextField) {/*Si comp est un element JTextField (les zone de saisie de texte)*/
+				/*for( Component comp : contentPane.getComponents()) {//comp sera a tour de role associer a chaque composent du formulaire
+					if( comp instanceof JTextField) {//Si comp est un element JTextField (les zone de saisie de texte)
 						if (LesTxtfASaisir.contains((JTextField)comp)) {
 							informationComplete((JTextField)comp);
 						}
@@ -484,16 +550,17 @@ public class JFformulaireAdherents extends JFrame {
 				}
 				if (formulaireComplete == false) {
 					JOptionPane.showMessageDialog(contentPane,"ERREUR : Le formulaire n'est pas totalement complété.");
-				}
+				}*/
 				
 				
+				//JOptionPane.showMessageDialog(contentPane,bgrGenre.getSelection().isSelected());
 				
 				
-				if (rdbtnAdhGenreM.isSelected()) {
+				/*if (rdbtnAdhGenreM.isSelected()) {
 					JOptionPane.showMessageDialog(contentPane,"M");
 				}else {
 					JOptionPane.showMessageDialog(contentPane,"F");
-				}
+				}*/
 				
 				
 			}
@@ -545,5 +612,7 @@ public class JFformulaireAdherents extends JFrame {
 		txtfAdhNationalite.setColumns(10);
 		txtfAdhNationalite.setBounds(107, 163, 179, 25);
 		contentPane.add(txtfAdhNationalite);
+		
+		init();
 	}
 }
