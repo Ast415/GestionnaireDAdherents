@@ -2,27 +2,49 @@ package com.btssio.projet1.classe;
 
 public class Adherent {
 	
+	private int idAdherent;
 	private String nom;
-	private String prenom;
-	private String genre;
-	private String dateDeNaissance;
-	private String villeDeNaissance;
 	private String nomDeNaissance;
+	private String prenom;
+	private String dateDeNaissance;
+	private String nationalite;
+	private String paysDeNaissance;
+	private String genre;
+	private String villeDeNaissance;
+	private int cp;
 	private String ville;
 	private String adresse;
-	private int cp;
-	private String nationalité;
-	private String numeroDeTelephone1;
-	private String numeroDeTelephone2;
+	private int numeroDeTelephone1;
+	private int numeroDeTelephone2;
+	private String courriel;
+	private String nomPrenomLegal;
 	private String arme;
 	private String pratique;
 	private String lateralité;
-	
+	private String categorie;
+	private Boolean licenceFFE;
+	private Boolean assurance;
+	private Boolean seancesTir;
+	private Boolean reducFamille;
+	private int reducFamilleEmeMembre;
+	private String aideMobil;
+	public int getIdAdherent() {
+		return idAdherent;
+	}
+	public void setIdAdherent(int idAdherent) {
+		this.idAdherent = idAdherent;
+	}
 	public String getNom() {
 		return nom;
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+	public String getNomDeNaissance() {
+		return nomDeNaissance;
+	}
+	public void setNomDeNaissance(String nomDeNaissance) {
+		this.nomDeNaissance = nomDeNaissance;
 	}
 	public String getPrenom() {
 		return prenom;
@@ -30,17 +52,29 @@ public class Adherent {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	public String getGenre() {
-		return genre;
-	}
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
 	public String getDateDeNaissance() {
 		return dateDeNaissance;
 	}
 	public void setDateDeNaissance(String dateDeNaissance) {
 		this.dateDeNaissance = dateDeNaissance;
+	}
+	public String getNationalite() {
+		return nationalite;
+	}
+	public void setNationalite(String nationalite) {
+		this.nationalite = nationalite;
+	}
+	public String getPaysDeNaissance() {
+		return paysDeNaissance;
+	}
+	public void setPaysDeNaissance(String paysDeNaissance) {
+		this.paysDeNaissance = paysDeNaissance;
+	}
+	public String getGenre() {
+		return genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 	public String getVilleDeNaissance() {
 		return villeDeNaissance;
@@ -48,11 +82,11 @@ public class Adherent {
 	public void setVilleDeNaissance(String villeDeNaissance) {
 		this.villeDeNaissance = villeDeNaissance;
 	}
-	public String getNomDeNaissance() {
-		return nomDeNaissance;
+	public int getCp() {
+		return cp;
 	}
-	public void setNomDeNaissance(String nomDeNaissance) {
-		this.nomDeNaissance = nomDeNaissance;
+	public void setCp(int cp) {
+		this.cp = cp;
 	}
 	public String getVille() {
 		return ville;
@@ -66,29 +100,29 @@ public class Adherent {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	public int getCp() {
-		return cp;
-	}
-	public void setCp(int cp) {
-		this.cp = cp;
-	}
-	public String getNationalité() {
-		return nationalité;
-	}
-	public void setNationalité(String nationalité) {
-		this.nationalité = nationalité;
-	}
-	public String getNumeroDeTelephone1() {
+	public int getNumeroDeTelephone1() {
 		return numeroDeTelephone1;
 	}
-	public void setNumeroDeTelephone1(String numeroDeTelephone1) {
+	public void setNumeroDeTelephone1(int numeroDeTelephone1) {
 		this.numeroDeTelephone1 = numeroDeTelephone1;
 	}
-	public String getNumeroDeTelephone2() {
+	public int getNumeroDeTelephone2() {
 		return numeroDeTelephone2;
 	}
-	public void setNumeroDeTelephone2(String numeroDeTelephone2) {
+	public void setNumeroDeTelephone2(int numeroDeTelephone2) {
 		this.numeroDeTelephone2 = numeroDeTelephone2;
+	}
+	public String getCourriel() {
+		return courriel;
+	}
+	public void setCourriel(String courriel) {
+		this.courriel = courriel;
+	}
+	public String getNomPrenomLegal() {
+		return nomPrenomLegal;
+	}
+	public void setNomPrenomLegal(String nomPrenomLegal) {
+		this.nomPrenomLegal = nomPrenomLegal;
 	}
 	public String getArme() {
 		return arme;
@@ -108,31 +142,85 @@ public class Adherent {
 	public void setLateralité(String lateralité) {
 		this.lateralité = lateralité;
 	}
-	
-	
-	public Adherent(String nom, String prenom, String genre, String dateDeNaissance, String villeDeNaissance,
-			String nomDeNaissance, String ville, String adresse, int cp, String nationalité, String numeroDeTelephone1,
-			String numeroDeTelephone2, String arme, String pratique, String lateralité) {
+	public String getCategorie() {
+		return categorie;
+	}
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+	public Boolean getLicenceFFE() {
+		return licenceFFE;
+	}
+	public void setLicenceFFE(Boolean licenceFFE) {
+		this.licenceFFE = licenceFFE;
+	}
+	public Boolean getAssurance() {
+		return assurance;
+	}
+	public void setAssurance(Boolean assurance) {
+		this.assurance = assurance;
+	}
+	public Boolean getSeancesTir() {
+		return seancesTir;
+	}
+	public void setSeancesTir(Boolean seancesTir) {
+		this.seancesTir = seancesTir;
+	}
+	public Boolean getReducFamille() {
+		return reducFamille;
+	}
+	public void setReducFamille(Boolean reducFamille) {
+		this.reducFamille = reducFamille;
+	}
+	public int getReducFamilleEmeMembre() {
+		return reducFamilleEmeMembre;
+	}
+	public void setReducFamilleEmeMembre(int reducFamilleEmeMembre) {
+		this.reducFamilleEmeMembre = reducFamilleEmeMembre;
+	}
+	public String getAideMobil() {
+		return aideMobil;
+	}
+	public void setAideMobil(String aideMobil) {
+		this.aideMobil = aideMobil;
+	}
+	public Adherent(int idAdherent, String nom, String nomDeNaissance, String prenom, String dateDeNaissance,
+			String nationalite, String paysDeNaissance, String genre, String villeDeNaissance, int cp, String ville,
+			String adresse, int numeroDeTelephone1, int numeroDeTelephone2, String courriel, String nomPrenomLegal,
+			String arme, String pratique, String lateralité, String categorie, Boolean licenceFFE, Boolean assurance,
+			Boolean seancesTir, Boolean reducFamille, int reducFamilleEmeMembre, String aideMobil) {
 		super();
+		this.idAdherent = idAdherent;
 		this.nom = nom;
-		this.prenom = prenom;
-		this.genre = genre;
-		this.dateDeNaissance = dateDeNaissance;
-		this.villeDeNaissance = villeDeNaissance;
 		this.nomDeNaissance = nomDeNaissance;
+		this.prenom = prenom;
+		this.dateDeNaissance = dateDeNaissance;
+		this.nationalite = nationalite;
+		this.paysDeNaissance = paysDeNaissance;
+		this.genre = genre;
+		this.villeDeNaissance = villeDeNaissance;
+		this.cp = cp;
 		this.ville = ville;
 		this.adresse = adresse;
-		this.cp = cp;
-		this.nationalité = nationalité;
 		this.numeroDeTelephone1 = numeroDeTelephone1;
 		this.numeroDeTelephone2 = numeroDeTelephone2;
+		this.courriel = courriel;
+		this.nomPrenomLegal = nomPrenomLegal;
 		this.arme = arme;
 		this.pratique = pratique;
 		this.lateralité = lateralité;
+		this.categorie = categorie;
+		this.licenceFFE = licenceFFE;
+		this.assurance = assurance;
+		this.seancesTir = seancesTir;
+		this.reducFamille = reducFamille;
+		this.reducFamilleEmeMembre = reducFamilleEmeMembre;
+		this.aideMobil = aideMobil;
 	}
-	public void SePresenter() {
-		System.out.println("Je suis "+this.nom+" "+this.prenom);
-	}
+	
+	
+
+	
 	
 
 }
