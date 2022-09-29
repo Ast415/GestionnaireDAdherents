@@ -20,6 +20,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JList;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -51,6 +52,7 @@ public class JFformulaireAdherents extends JFrame {
 	private JTextField txtfAdhTel2;
 	private JTextField txtfAdhCourriel;
 	private JTextField txtfAdhNomPrenomLeg;
+	private JTextField txtfAdhNationalite;
 	private final ButtonGroup bgrGenre = new ButtonGroup();
 	private final ButtonGroup bgrArme = new ButtonGroup();
 	private final ButtonGroup bgrLateralite = new ButtonGroup();
@@ -61,6 +63,7 @@ public class JFformulaireAdherents extends JFrame {
 	
 	private List<JTextField> LesTxtfASaisir = new ArrayList<JTextField>();
 	private boolean formulaireComplete;
+	private final ButtonGroup bgrPratique = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -78,6 +81,11 @@ public class JFformulaireAdherents extends JFrame {
 		});
 	}
 	
+	public void init() {
+		AjoutDesTxtfASaisir();
+		formulaireComplete = true;
+	}
+	
 	public void AjoutDesTxtfASaisir() {
 		LesTxtfASaisir.add(txtfAdhNom);
 		LesTxtfASaisir.add(txtfAdhPrenom);
@@ -90,8 +98,8 @@ public class JFformulaireAdherents extends JFrame {
 		LesTxtfASaisir.add(txtfAdhCP);
 		LesTxtfASaisir.add(txtfAdhVille);
 		LesTxtfASaisir.add(txtfAdhTel1);
-		LesTxtfASaisir.add(txtfAdhTel2);
 		LesTxtfASaisir.add(txtfAdhCourriel);
+		LesTxtfASaisir.add(txtfAdhNationalite);
 	}
 	
 	
@@ -102,6 +110,15 @@ public class JFformulaireAdherents extends JFrame {
 		}catch (Exception e){
 			return false;
 		}
+	}
+	
+	public boolean BonneTaille(JTextField UnChampDeText, int LaTailleMin, int LaTailleMax) {
+		if(UnChampDeText.getText().length()<LaTailleMin || UnChampDeText.getText().length()>LaTailleMax) {
+			return false;
+		}else {
+			return true;
+		}
+		
 	}
 	
 	public void informationComplete(JTextField UnChampDeText) {
@@ -170,17 +187,18 @@ public class JFformulaireAdherents extends JFrame {
 		
 		JLabel lblAdhGenre = new JLabel("Genre* :");
 		lblAdhGenre.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblAdhGenre.setBounds(10, 168, 91, 19);
+		lblAdhGenre.setBounds(10, 194, 91, 19);
 		contentPane.add(lblAdhGenre);
 		
 		JRadioButton rdbtnAdhGenreM = new JRadioButton("Masculin");
+		rdbtnAdhGenreM.setSelected(true);
 		bgrGenre.add(rdbtnAdhGenreM);
-		rdbtnAdhGenreM.setBounds(107, 168, 179, 21);
+		rdbtnAdhGenreM.setBounds(107, 194, 82, 21);
 		contentPane.add(rdbtnAdhGenreM);
 		
 		JRadioButton rdbtnAdhGenreF = new JRadioButton("Féminin");
 		bgrGenre.add(rdbtnAdhGenreF);
-		rdbtnAdhGenreF.setBounds(107, 198, 179, 21);
+		rdbtnAdhGenreF.setBounds(204, 195, 82, 21);
 		contentPane.add(rdbtnAdhGenreF);
 		
 		txtfAdhNomNaiss = new JTextField();
@@ -288,7 +306,7 @@ public class JFformulaireAdherents extends JFrame {
 		txtfAdhTel2.setBounds(413, 304, 187, 25);
 		contentPane.add(txtfAdhTel2);
 		
-		JLabel lblAdhTel2 = new JLabel("Telephone 2* :");
+		JLabel lblAdhTel2 = new JLabel("Telephone 2 :");
 		lblAdhTel2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblAdhTel2.setBounds(309, 305, 105, 19);
 		contentPane.add(lblAdhTel2);
@@ -319,6 +337,7 @@ public class JFformulaireAdherents extends JFrame {
 		contentPane.add(lblAdhArme);
 		
 		JCheckBox rdbtnAdhArmeF = new JCheckBox("Fleuret");
+		rdbtnAdhArmeF.setSelected(true);
 		bgrArme.add(rdbtnAdhArmeF);
 		rdbtnAdhArmeF.setBounds(107, 435, 93, 21);
 		contentPane.add(rdbtnAdhArmeF);
@@ -344,16 +363,18 @@ public class JFformulaireAdherents extends JFrame {
 		contentPane.add(lblAdhLateralite);
 		
 		JCheckBox rdbtnAdhPratiqueL = new JCheckBox("Loisir");
-		bgrGenre.add(rdbtnAdhPratiqueL);
+		rdbtnAdhPratiqueL.setSelected(true);
+		bgrPratique.add(rdbtnAdhPratiqueL);
 		rdbtnAdhPratiqueL.setBounds(358, 435, 93, 21);
 		contentPane.add(rdbtnAdhPratiqueL);
 		
 		JCheckBox rdbtnAdhPratiqueC = new JCheckBox("Compétition");
-		bgrGenre.add(rdbtnAdhPratiqueC);
+		bgrPratique.add(rdbtnAdhPratiqueC);
 		rdbtnAdhPratiqueC.setBounds(453, 435, 126, 21);
 		contentPane.add(rdbtnAdhPratiqueC);
 		
 		JCheckBox rdbtnAdhLateraliteD = new JCheckBox("Droitier");
+		rdbtnAdhLateraliteD.setSelected(true);
 		bgrLateralite.add(rdbtnAdhLateraliteD);
 		rdbtnAdhLateraliteD.setBounds(358, 463, 93, 21);
 		contentPane.add(rdbtnAdhLateraliteD);
@@ -449,10 +470,11 @@ public class JFformulaireAdherents extends JFrame {
 		JButton btnNewButton = new JButton("Valider");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				formulaireComplete = true;
-				AjoutDesTxtfASaisir();
-				//JOptionPane.showMessageDialog(txtfAdhNom,informationComplete(txtfAdhPrenom));
-				//informationComplete(txtfAdhNom);
+				init();
+				
+				JOptionPane.showMessageDialog(contentPane,BonneTaille(txtfAdhCP,5,5));
+				
+				//Verifie que les champ sont bien saisi
 				for( Component comp : contentPane.getComponents()) {/*comp sera a tour de role associer a chaque composent du formulaire*/
 					if( comp instanceof JTextField) {/*Si comp est un element JTextField (les zone de saisie de texte)*/
 						if (LesTxtfASaisir.contains((JTextField)comp)) {
@@ -463,6 +485,17 @@ public class JFformulaireAdherents extends JFrame {
 				if (formulaireComplete == false) {
 					JOptionPane.showMessageDialog(contentPane,"ERREUR : Le formulaire n'est pas totalement complété.");
 				}
+				
+				
+				
+				
+				if (rdbtnAdhGenreM.isSelected()) {
+					JOptionPane.showMessageDialog(contentPane,"M");
+				}else {
+					JOptionPane.showMessageDialog(contentPane,"F");
+				}
+				
+				
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -502,5 +535,15 @@ public class JFformulaireAdherents extends JFrame {
 		lblAdhNom_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblAdhNom_1.setBounds(10, 545, 590, 19);
 		contentPane.add(lblAdhNom_1);
+		
+		JLabel lblAdhNationalite = new JLabel("Nationalité* :");
+		lblAdhNationalite.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblAdhNationalite.setBounds(10, 164, 91, 19);
+		contentPane.add(lblAdhNationalite);
+		
+		txtfAdhNationalite = new JTextField();
+		txtfAdhNationalite.setColumns(10);
+		txtfAdhNationalite.setBounds(107, 163, 179, 25);
+		contentPane.add(txtfAdhNationalite);
 	}
 }
