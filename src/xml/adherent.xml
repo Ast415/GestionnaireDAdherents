@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adherent>
+ 	<adherent id = "0">
+		<nom></nom>
+		<nomDeNaissance></nomDeNaissance>
+		<prenom></prenom>
+		<dateDeNaissance></dateDeNaissance>
+		<nationalite></nationalite>
+		<paysDeNaissance></paysDeNaissance>
+		<genre></genre>
+		<villeDeNaissance></villeDeNaissance>
+		<cp></cp>
+		<ville></ville>
+		<adresse></adresse>
+		<numeroDeTelephone1></numeroDeTelephone1>
+		<numeroDeTelephone2></numeroDeTelephone2>
+		<courriel></courriel>
+		<nomPrenomLegal></nomPrenomLegal>
+		<arme></arme>
+		<pratique></pratique>
+		<lateralite></lateralite>
+		<categorie></categorie>
+		<licenceFFE></licenceFFE>
+		<assurance></assurance>
+		<seancesTir></seancesTir>
+		<reducFamille></reducFamille>
+		<reducFamilleEmeMembre></reducFamilleEmeMembre>
+		<aideMobil></aideMobil>
+	</adherent>
+</adherent>
+
+       
+     
+      
