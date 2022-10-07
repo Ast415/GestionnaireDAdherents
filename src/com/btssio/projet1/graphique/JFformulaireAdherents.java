@@ -7,6 +7,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.btssio.projet1.classe.Adherent;
+import com.btssio.projet1.classe.ecritureXML;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -533,6 +537,37 @@ public class JFformulaireAdherents extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(contentPane,verificationFormulaire());
+				if (verificationFormulaire()==false) {
+					Adherent adh1 = new Adherent(
+							1,
+							txtfAdhNom.getText(),
+							"bories",
+							"bastien",
+							"29/01/2002",
+							"francais",
+							"France",
+							"homme",
+							"Castres",
+							31400,
+							"Toulouse",
+							"118 Rte de Narbonne",
+							781818181,
+							781818181,
+							"b0728382@gmail.com",
+							"",
+							"E",
+							"",
+							"D",
+							"",
+							false,
+							false,
+							false,
+							false,
+							1,
+							"");
+					
+					JOptionPane.showMessageDialog(contentPane,adh1);
+				}
 
 				
 				
