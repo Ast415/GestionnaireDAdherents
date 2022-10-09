@@ -33,7 +33,7 @@ public class JFformulaireMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public JFformulaireMenu() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Quitte l'application.
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -44,7 +44,10 @@ public class JFformulaireMenu extends JFrame {
 		JButton btnNewButton = new JButton("Ajouter");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		        new JFformulaireAdherents().setVisible(true);
+				if(JFformulaireAdherents.formEstOuvert==false) {//Si la formulaire adhérent est fermée 
+					JFformulaireAdherents.formEstOuvert=true;//Alors on définit la variable comme true
+					new JFformulaireAdherents().setVisible(true);//Et on ouvre le formulaire 
+				}
 			}
 		});
 		btnNewButton.setBounds(77, 218, 137, 32);
@@ -53,7 +56,10 @@ public class JFformulaireMenu extends JFrame {
 		JButton btnNewButton_1 = new JButton("Afficher");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		        new JFformulaireAfficher().setVisible(true);
+				if(JFformulaireAfficher.formEstOuvert==false) {//Si la formulaire adhérent est fermée 
+					JFformulaireAfficher.formEstOuvert=true;//Alors on définit la variable comme true
+					new JFformulaireAfficher().setVisible(true);//Et on ouvre le formulaire 
+				}
 			}
 		});
 		btnNewButton_1.setBounds(224, 218, 137, 32);
