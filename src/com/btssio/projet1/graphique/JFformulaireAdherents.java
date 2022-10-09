@@ -37,6 +37,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class JFformulaireAdherents extends JFrame {
 
@@ -65,7 +67,8 @@ public class JFformulaireAdherents extends JFrame {
 	private final ButtonGroup bgrReducFamille = new ButtonGroup();
 	private final ButtonGroup bgrSeanceTir = new ButtonGroup();
 	private final ButtonGroup bgrPratique = new ButtonGroup();
-	
+	protected static boolean formEstOuvert = false;//Variable permettant de déterminer si la fenêtre est ouverte ou non 
+
 	private List<JTextField> LesTxtfASaisir = new ArrayList<JTextField>();
 	private boolean formulaireComplete;
 
@@ -209,9 +212,15 @@ public class JFformulaireAdherents extends JFrame {
 	 * Create the frame.
 	 */
 	public JFformulaireAdherents() {
+		addWindowListener(new WindowAdapter() {//S'exécute comment ferme la fenêtre
+			@Override
+			public void windowClosed(WindowEvent e) {
+				formEstOuvert=false;
+			}
+		});
 		setResizable(false);
 		setTitle("Ajouter un adhérent");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFformulaireAdherents.DISPOSE_ON_CLOSE);//Supprime l'objet frame, mais maintient l'exécution de l'application.
 		setBounds(100, 100, 1291, 671);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
