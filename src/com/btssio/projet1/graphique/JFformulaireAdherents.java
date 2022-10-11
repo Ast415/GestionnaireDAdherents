@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.btssio.projet1.classe.Adherent;
-import com.btssio.projet1.classe.ecritureXML;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

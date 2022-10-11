@@ -15,9 +15,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class lectureXML {
-	@SuppressWarnings("null")
 	public static ArrayList<Club> importationXMLClub() throws ParserConfigurationException, SAXException {
-		ArrayList<Club> lesClub = new ArrayList();
+		ArrayList<Club> lesClub = new ArrayList<Club>();
 		Club newClub;
 
 		try {
@@ -56,7 +55,7 @@ public class lectureXML {
 	}
 
 	public static ArrayList<categorie> importationXMLCategories() throws ParserConfigurationException, SAXException {
-		ArrayList<categorie> lesCategorie = new ArrayList();
+		ArrayList<categorie> lesCategorie = new ArrayList<categorie>();
 		categorie newcategorie;
 
 		try {
@@ -90,7 +89,7 @@ public class lectureXML {
 	}
 
 	public static ArrayList<Adherent> importationXMLadherent() throws ParserConfigurationException, SAXException {
-		ArrayList<Adherent> lesAdherent = new ArrayList();
+		ArrayList<Adherent> lesAdherent = new ArrayList<Adherent>();
 		Adherent newcategorie;
 		boolean licenceFFE, assurance, seancesTir, reducFamille;
 
