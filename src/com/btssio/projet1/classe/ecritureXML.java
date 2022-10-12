@@ -12,7 +12,7 @@ import org.w3c.dom.*;
 
 
 
-class ecritureXML {
+public class ecritureXML {
 	private static String trueOrFals(Boolean val) {
 		String result;
 		
@@ -153,15 +153,20 @@ class ecritureXML {
 	            tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "roles.dtd");
 	            tr.setOutputProperty("{http://xml.Apache.org/xslt}indent-amount", "4");
 	            
+	            //test
 	            System.out.println("1");
+	            
 	            // send DOM to file
 	            tr.transform(new DOMSource(dom), new StreamResult(new FileOutputStream("xml")));
-
-	    	    System.out.println("3");
+	            
+	            //test
+	    	    System.out.println("2");
 	        } catch (TransformerException te) {
 	            System.out.println(te.getMessage());
+	            
+	            //test
+		        System.out.println("3");
 	        }
-	        System.out.println("2");
 	    } catch (ParserConfigurationException pce) {
 	        System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
 	    }
