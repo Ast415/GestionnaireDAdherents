@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<adherents>
+<adherent>
  	<adherent id = "0">
 		<nom></nom>
 		<nomDeNaissance></nomDeNaissance>
@@ -27,7 +27,7 @@
 		<reducFamilleEmeMembre></reducFamilleEmeMembre>
 		<aideMobil></aideMobil>
 	</adherent>
-</adherents>
+</adherent>
 
        
      

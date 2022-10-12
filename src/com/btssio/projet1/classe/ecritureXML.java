@@ -1,13 +1,16 @@
 package com.btssio.projet1.classe;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.*;
-import javax.xml.transform.stream.*;
+import javax.xml.parsers.*; 
+import javax.xml.transform.*; 
+import javax.xml.transform.dom.*; 
+import javax.xml.transform.stream.*; 
+import org.xml.sax.*; 
 import org.w3c.dom.*;
-import org.xml.sax.SAXException;
+
+
 
 class ecritureXML {
 	private static String trueOrFals(Boolean val) {
@@ -149,23 +152,23 @@ class ecritureXML {
 	            tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 	            tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "roles.dtd");
 	            tr.setOutputProperty("{http://xml.Apache.org/xslt}indent-amount", "4");
-
+	            
+	            System.out.println("1");
 	            // send DOM to file
-	            tr.transform(new DOMSource(dom), 
-	                                 new StreamResult());
+	            tr.transform(new DOMSource(dom), new StreamResult(new FileOutputStream("xml")));
 
+	    	    System.out.println("3");
 	        } catch (TransformerException te) {
 	            System.out.println(te.getMessage());
 	        }
-	        
+	        System.out.println("2");
 	    } catch (ParserConfigurationException pce) {
 	        System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
 	    }
- 
 	}
 	
 	public static void main(String[]args) throws ParserConfigurationException, SAXException, IOException {
-		Adherent test = new Adherent(0, null, null, null, null, null, null, null, null, 0, null, null, 0, 0, null, null, null, null, null, null, null, null, null, null, 0, null);
+		Adherent test = new Adherent(0, null, null, null, null, null, null, null, null, 0, null, null, 0, 0, null, null, null, null, null, null, true, true, true, true, 0, null);
 		newAdherant(test);
 		
 	}
