@@ -27,11 +27,13 @@ import javax.swing.SwingConstants;
 public class JFformulaireAfficher extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField txtfAffIDAdh;
+	private JTextPane txtpAffResultat;
 	protected static boolean formEstOuvert = false;//Variable permettant de déterminer si la fenêtre est ouverte ou non 
-	
+	//Ha adhérent de test 
 	private Adherent testAdh1 = new Adherent(
 			//2,
-			"A",
+			"duval",
 			"duval",
 			"edourd",
 			"10/02/1997",
@@ -46,10 +48,10 @@ public class JFformulaireAfficher extends JFrame {
 			781818181,
 			"b0728382@gmail.com",
 			"",
-			"E",
-			"",
-			"D",
-			"",
+			"Fleuret",
+			"Loisir",
+			"Droitier",
+			"Eveil",
 			false,
 			false,
 			false,
@@ -58,7 +60,7 @@ public class JFformulaireAfficher extends JFrame {
 			"edcdccdcdc");
 	private Adherent testAdh2 = new Adherent(
 			//3,
-			"A",
+			"Ren",
 			"Ren",
 			"Allard",
 			"20/11/1983",
@@ -73,19 +75,18 @@ public class JFformulaireAfficher extends JFrame {
 			781818181,
 			"b0728382@gmail.com",
 			"",
-			"E",
-			"",
-			"D",
-			"",
+			"Epee",
+			"Compétitive",
+			"Gaucher",
+			"Minimes",
 			false,
 			false,
 			false,
 			false,
 			1,
 			"edcdccdcdc");
+	//Hé liste des adhérents de test 
 	private ArrayList<Adherent> lesTestAdherent = new ArrayList<Adherent>();
-	private JTextField txtfAffIDAdh;
-	private JTextPane txtpAffResultat;
 	
 	public void init() {
 		lesTestAdherent.add(testAdh1);
@@ -113,6 +114,8 @@ public class JFformulaireAfficher extends JFrame {
 	 * Create the frame.
 	 */
 	public JFformulaireAfficher() {
+		setTitle("Afficher un adhérent");
+		setResizable(false);
 		addWindowListener(new WindowAdapter() {//S'exécute comment ferme la fenêtre
 			@Override
 			public void windowClosed(WindowEvent e) {
@@ -130,9 +133,12 @@ public class JFformulaireAfficher extends JFrame {
 		JButton btnAffValider = new JButton("Valider");
 		btnAffValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Hé on va récupérer la valeur qu'il y a dans le champ 
 				int idAdherent = Integer.valueOf(txtfAffIDAdh.getText());
+				//Si cette valeur est une entité dans la liste des adhérents alors on affiche ces informations
+				//Hé dans la liste adhérent la position de l'adhérent est son identifiant sont la même chose 
 				if (idAdherent<lesTestAdherent.size() && idAdherent>=0) {
-					txtpAffResultat.setForeground(new Color(0, 0, 0));
+					txtpAffResultat.setForeground(new Color(0, 0, 0));//Mets la couleur du texte en noir 
 					txtpAffResultat.setText(
 							  "Nom : "+lesTestAdherent.get(idAdherent).getNom()
 							+ "\nPrenom : "+lesTestAdherent.get(idAdherent).getPrenom()
@@ -149,7 +155,7 @@ public class JFformulaireAfficher extends JFrame {
 							+ "\nLatéralité : "+lesTestAdherent.get(idAdherent).getLateralité()
 							+ "\nCatégotrie : "+lesTestAdherent.get(idAdherent).getCategorie());
 				}else {
-					txtpAffResultat.setForeground(new Color(213, 26, 0));
+					txtpAffResultat.setForeground(new Color(213, 26, 0));//Hé mets la couleur du texte en rouge 
 					txtpAffResultat.setText("Cet identifiant n'est pas reconnu, veuillez essayer un autre identifiant ");
 				}
 			}
@@ -163,13 +169,14 @@ public class JFformulaireAfficher extends JFrame {
 		contentPane.add(txtfAffIDAdh);
 		txtfAffIDAdh.setColumns(10);
 		
-		JLabel lblAffIDAdh = new JLabel("Saisir l'identifiant de l'adhérent");
+		JLabel lblAffIDAdh = new JLabel("Saisir l'identifiant d'un adhérent");
 		lblAffIDAdh.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblAffIDAdh.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAffIDAdh.setBounds(10, 102, 282, 38);
 		contentPane.add(lblAffIDAdh);
 		
 		JLabel lblAfficherUnAdhrent = new JLabel("Afficher un adhérent");
+		lblAfficherUnAdhrent.setToolTipText("Afficher un adhérent");
 		lblAfficherUnAdhrent.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAfficherUnAdhrent.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblAfficherUnAdhrent.setBounds(10, 11, 725, 38);
