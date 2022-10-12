@@ -49,6 +49,7 @@ import java.io.IOException;
 
 public class JFformulaireAdherents extends JFrame {
 
+	//Zone de saisie 
 	private JPanel contentPane;
 	private JTextField txtfAdhNom;
 	private JTextField txtfAdhPrenom;
@@ -66,6 +67,7 @@ public class JFformulaireAdherents extends JFrame {
 	private JTextField txtfAdhCourriel;
 	private JTextField txtfAdhNomPrenomLeg;
 	private JTextField txtfAdhNationalite;
+	//Les groupes des boutons radio 
 	private final ButtonGroup bgrGenre = new ButtonGroup();
 	private final ButtonGroup bgrArme = new ButtonGroup();
 	private final ButtonGroup bgrLateralite = new ButtonGroup();
@@ -75,7 +77,6 @@ public class JFformulaireAdherents extends JFrame {
 	private final ButtonGroup bgrSeanceTir = new ButtonGroup();
 	private final ButtonGroup bgrPratique = new ButtonGroup();
 	protected static boolean formEstOuvert = false;//Variable permettant de déterminer si la fenêtre est ouverte ou non 
-
 	private List<JTextField> LesTxtfASaisir = new ArrayList<JTextField>();
 	private boolean formulaireComplete;
 
@@ -95,12 +96,12 @@ public class JFformulaireAdherents extends JFrame {
 		});
 	}
 	
-	public void init() {
+	public void init() {//Voir à la fin du programme 
 		AjoutDesTxtfASaisir();
 		formulaireComplete = true;
 	}
 	
-	public void AjoutDesTxtfASaisir() {
+	public void AjoutDesTxtfASaisir() {//Liste des zones de texte à saisir obligatoirement 
 		LesTxtfASaisir.add(txtfAdhNom);
 		LesTxtfASaisir.add(txtfAdhPrenom);
 		LesTxtfASaisir.add(txtfAdhAdresse);
@@ -117,7 +118,7 @@ public class JFformulaireAdherents extends JFrame {
 		
 	}
 	
-	
+	//Permet de déterminer si la valeur du champ êtes une valeur entiere
 	public boolean estUneValeurEntiere(JTextField UnChampDeText) {
 		try {
 			int i = Integer.valueOf(UnChampDeText.getText());
@@ -127,6 +128,7 @@ public class JFformulaireAdherents extends JFrame {
 		}
 	}
 	
+	//Verifie que la taille de la valeur d'un champ soit bonne en fonction de certains paramètres 
 	public boolean bonneTaille(JTextField UnChampDeText, int LaTailleMin, int LaTailleMax) {
 		if(UnChampDeText.getText().length()<LaTailleMin || UnChampDeText.getText().length()>LaTailleMax) {
 			return false;
@@ -136,6 +138,7 @@ public class JFformulaireAdherents extends JFrame {
 		
 	}
 	
+	//Hé on vérifie que la valeur d'un champ le dépasse pas un minimum et maximum 
 	public boolean bonneEtendue(JTextField UnChampDeText, int LaTailleMin, int LaTailleMax) {
 		if(Integer.valueOf(UnChampDeText.getText())<LaTailleMin || Integer.valueOf(UnChampDeText.getText())>LaTailleMax) {
 			return false;
@@ -144,6 +147,7 @@ public class JFformulaireAdherents extends JFrame {
 		}
 	}
 	
+	//Hé l'ensemble des tests de chanp qui besoin d'avoir une taille précise 
 	public boolean tousDeBonneTaille() {
 		boolean verification;
 		verification = bonneTaille(txtfAdhCP,5,5);
@@ -163,6 +167,7 @@ public class JFformulaireAdherents extends JFrame {
 		return verification;
 	}
 	
+	//Ensemble de tests qui vérifie que ces champs hé sois bien dans l'étendue indiquée 
 	public boolean tousOnUneBonneEtendue() {
 		boolean verification;
 		verification = bonneEtendue(txtfAdhDateNaissJ,1,31);
@@ -175,6 +180,7 @@ public class JFformulaireAdherents extends JFrame {
 		return verification;
 	}
 	
+	//Hé ensemble de tests qui vérifient que tous les champs tester soient bien des valeurs entières 
 	public boolean tousSontDesValeurEntiere() {
 		boolean verification;
 		verification = estUneValeurEntiere(txtfAdhDateNaissJ);
@@ -193,6 +199,7 @@ public class JFformulaireAdherents extends JFrame {
 		return verification;
 	}
 
+	//Va effectuer à tour de rôle chaque methode de test
 	public boolean verificationFormulaire() {
 		boolean verification;
 		String messageErreur="ERREUR : Le formulaire n'est pas conforme !\n\n";
@@ -224,6 +231,7 @@ public class JFformulaireAdherents extends JFrame {
 		return verification;
 	}
 	
+	//Hé vérifie que tous les champs qui doivent être remplis obligatoirement doivent être remplis 
 	public boolean informationComplete() {
 		formulaireComplete = true;
 		for( Component comp : contentPane.getComponents()) {//comp sera a tour de role associer a chaque composent du formulaire
@@ -246,11 +254,6 @@ public class JFformulaireAdherents extends JFrame {
 		}
 		return formulaireComplete;
 	}
-	
-	
-	public boolean informationCorrecte(JTextField UnChampDeText) {
-		return true;
-	}
 
 	/**
 	 * Create the frame.
@@ -265,7 +268,7 @@ public class JFformulaireAdherents extends JFrame {
 		setResizable(false);
 		setTitle("Ajouter un adhérent");
 		setDefaultCloseOperation(JFformulaireAdherents.DISPOSE_ON_CLOSE);//Supprime l'objet frame, mais maintient l'exécution de l'application.
-		setBounds(100, 100, 1291, 671);
+		setBounds(100, 100, 629, 671);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -275,16 +278,10 @@ public class JFformulaireAdherents extends JFrame {
 		JLabel lblAdhTitreForm = new JLabel("Ajouter un adhérent");
 		lblAdhTitreForm.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblAdhTitreForm.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAdhTitreForm.setBounds(0, 10, 1287, 38);
+		lblAdhTitreForm.setBounds(0, 10, 600, 38);
 		contentPane.add(lblAdhTitreForm);
 		
-		txtfAdhNom = new JTextField();/*
-		txtfAdhNom.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				txtfAdhNom.setBackground(Color.WHITE);
-			}
-		});*/
+		txtfAdhNom = new JTextField();
 		txtfAdhNom.setBounds(107, 90, 179, 25);
 		contentPane.add(txtfAdhNom);
 		txtfAdhNom.setColumns(10);
@@ -576,6 +573,11 @@ public class JFformulaireAdherents extends JFrame {
 		rdbtnAdhSeanceTirN.setBounds(793, 211, 93, 21);
 		contentPane.add(rdbtnAdhSeanceTirN);
 		
+		JComboBox cmbAdhCategorie = new JComboBox();
+		cmbAdhCategorie.setModel(new DefaultComboBoxModel(new String[] {"Éveil", "Atomes", "Poussins", "Pupilles", "Benjamins", "Minimes", "Cadets", "Juniors", "Séniors", "Vétérans"}));
+		cmbAdhCategorie.setBounds(348, 492, 179, 22);
+		contentPane.add(cmbAdhCategorie);
+		
 		JLabel lblAdhAideMobil = new JLabel("Dispositif d'aide mobilisé");
 		lblAdhAideMobil.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAdhAideMobil.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -589,8 +591,76 @@ public class JFformulaireAdherents extends JFrame {
 		JButton btnAdhValider = new JButton("Valider");
 		btnAdhValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//On effectué un test pour vérifier que les informations d'enfant lui reçoivent bon 
 				if (verificationFormulaire()==true) {
-					Adherent adh1 = new Adherent(
+					String Genre;
+					String Arme="";
+					String Pratique;
+					String Lateralite;
+					String Categorie=(String) cmbAdhCategorie.getSelectedItem();
+					
+					//On détermine le résultat des boutons sélectionnés 
+					if (rdbtnAdhGenreM.isSelected()) {
+						Genre = "Masculin";
+					}else {
+						Genre = "Féminin";
+					}
+					
+					if (rdbtnAdhArmeF.isSelected()) {
+						Arme = "Fleuret";
+					}
+					if (rdbtnAdhArmeE.isSelected()) {
+						Arme = "Epee";
+					}
+					if (rdbtnAdhArmeS.isSelected()) {
+						Arme = "Sabre";
+					}
+
+					if (rdbtnAdhPratiqueL.isSelected()) {
+						Pratique = "Loisir";
+					}else {
+						Pratique = "Compétition";
+					}
+					
+					if (rdbtnAdhLateraliteD.isSelected()) {
+						Lateralite = "Droitier";
+					}else {
+						Lateralite = "Gaucher";
+					}
+					
+					//Création de l'adhérent à partir du formulaire 
+					/*//NE PAS SUPPRIMER version finale de l'instanciaition de adhérent
+					Adherent adh = new Adherent(
+							txtfAdhNom.getText(),
+							txtfAdhNomNaiss.getText(),
+							txtfAdhPrenom.getText(),
+							txtfAdhDateNaissJ.getSelectedText()+"/"
+							+txtfAdhDateNaissM.getSelectedText()+"/"
+							+txtfAdhDateNaissA.getSelectedText(),
+							txtfAdhNationalite.getText(),
+							txtfAdhPaysNaiss.getText(),
+							Genre,
+							txtfAdhVilleNaiss.getText(),
+							Integer.valueOf(txtfAdhCP.getText()),
+							txtfAdhVille.getText(),
+							txtfAdhAdresse.getText(),
+							Integer.valueOf(txtfAdhTel1.getText()),
+							Integer.valueOf(txtfAdhTel2.getText()),
+							txtfAdhCourriel.getText(),
+							txtfAdhNomPrenomLeg.getText(),
+							Arme,
+							Pratique,
+							Lateralite,
+							Categorie,
+							false,
+							false,
+							false,
+							false,
+							1,
+							"");*/
+					
+					//Adherent test, a supprimer
+					Adherent adh2 = new Adherent(
 							//1,
 							"A",
 							"bories",
@@ -598,7 +668,7 @@ public class JFformulaireAdherents extends JFrame {
 							"29/01/2002",
 							"francais",
 							"France",
-							"homme",
+							Genre,
 							"Castres",
 							31400,
 							"Toulouse",
@@ -607,23 +677,25 @@ public class JFformulaireAdherents extends JFrame {
 							781818181,
 							"b0728382@gmail.com",
 							"",
-							"E",
-							"",
-							"D",
-							"",
+							Arme,
+							Pratique,
+							Lateralite,
+							Categorie,
 							false,
 							false,
 							false,
 							false,
 							1,
-							"edcdccdcdc");
+							"");
 					JOptionPane.showMessageDialog(contentPane,"Les information sont valide");
+					//Écriture de l'adhérent dans le fichier XML
 					try {
-						ecritureXML.newAdherant(adh1);
+						ecritureXML.newAdherant(adh2);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+					//Test de lecture A SUPPRIMER
 					try {
 						JOptionPane.showMessageDialog(contentPane,lectureXML.importationXMLadherent());
 					} catch (HeadlessException | ParserConfigurationException | SAXException e1) {
@@ -631,40 +703,10 @@ public class JFformulaireAdherents extends JFrame {
 						e1.printStackTrace();
 					}
 				}
-
-				
-				
-				
-				
-				//JOptionPane.showMessageDialog(contentPane,bonneTaille(txtfAdhCP,5,5));
-				
-				//Verifie que les champ sont bien saisi
-				/*for( Component comp : contentPane.getComponents()) {//comp sera a tour de role associer a chaque composent du formulaire
-					if( comp instanceof JTextField) {//Si comp est un element JTextField (les zone de saisie de texte)
-						if (LesTxtfASaisir.contains((JTextField)comp)) {
-							informationComplete((JTextField)comp);
-						}
-					}
-				}
-				if (formulaireComplete == false) {
-					JOptionPane.showMessageDialog(contentPane,"ERREUR : Le formulaire n'est pas totalement complété.");
-				}*/
-				
-				
-				//JOptionPane.showMessageDialog(contentPane,bgrGenre.getSelection().isSelected());
-				
-				
-				/*if (rdbtnAdhGenreM.isSelected()) {
-					JOptionPane.showMessageDialog(contentPane,"M");
-				}else {
-					JOptionPane.showMessageDialog(contentPane,"F");
-				}*/
-				
-				
 			}
 		});
 		btnAdhValider.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnAdhValider.setBounds(440, 568, 160, 38);
+		btnAdhValider.setBounds(112, 583, 160, 38);
 		contentPane.add(btnAdhValider);
 		
 		JButton btnReinitialiser = new JButton("Réinitialiser");
@@ -683,18 +725,13 @@ public class JFformulaireAdherents extends JFrame {
 			}
 		});
 		btnReinitialiser.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnReinitialiser.setBounds(674, 568, 160, 38);
+		btnReinitialiser.setBounds(346, 583, 160, 38);
 		contentPane.add(btnReinitialiser);
 		
 		JLabel lblCategorie = new JLabel("Categorie* :");
 		lblCategorie.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCategorie.setBounds(674, 91, 77, 19);
+		lblCategorie.setBounds(261, 492, 77, 19);
 		contentPane.add(lblCategorie);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Éveil", "Atomes", "Poussins", "Pupilles", "Benjamins", "Minimes", "Cadets", "Juniors", "Séniors", "Vétérans"}));
-		comboBox.setBounds(761, 91, 179, 22);
-		contentPane.add(comboBox);
 		
 		JLabel lblAdhNom_1 = new JLabel("INFORMATION : Les éléments contenant un * doit être complété pour valider le formulaire.");
 		lblAdhNom_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
