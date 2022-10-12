@@ -7,6 +7,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import com.btssio.projet1.classe.Adherent;
 import com.btssio.projet1.classe.lectureXML;
@@ -16,6 +19,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
@@ -600,6 +605,12 @@ public class JFformulaireAdherents extends JFrame {
 					try {
 						ecritureXML.newAdherant(adh1);
 					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					try {
+						JOptionPane.showMessageDialog(contentPane,lectureXML.importationXMLadherent());
+					} catch (HeadlessException | ParserConfigurationException | SAXException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
