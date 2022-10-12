@@ -195,16 +195,32 @@ public class JFformulaireAdherents extends JFrame {
 
 	public boolean verificationFormulaire() {
 		boolean verification;
+		String messageErreur="ERREUR : Le formulaire n'est pas conforme !\n\n";
+		
 		verification=informationComplete();
 		if (verification == true) {
 			verification=tousDeBonneTaille();
+		}else {
+			messageErreur = messageErreur+" - Tout les chambres n'ont pas été bien saisis, modifier les champs en rouge\n";
 		}
+		
 		if (verification == true) {
 			verification=tousSontDesValeurEntiere();
+		}else {
+			messageErreur = messageErreur+" - Un ou plusieurs champs n'a pas une taille réglementaire\n";
 		}
+		
 		if (verification == true) {
 			verification=tousOnUneBonneEtendue();
+		}else {
+			messageErreur = messageErreur+" - Un ou plusieurs champs n'est pas une valeur entiere\n";
 		}
+		
+		if (verification != true) {
+			messageErreur = messageErreur+" - Un ou plusieurs champs est, soit trop grand, soit trop petit\n";
+			JOptionPane.showMessageDialog(contentPane,messageErreur);
+		}
+		
 		return verification;
 	}
 	
@@ -570,10 +586,10 @@ public class JFformulaireAdherents extends JFrame {
 		txtaAdhAideMobil.setBounds(673, 329, 591, 173);
 		contentPane.add(txtaAdhAideMobil);
 		
-		JButton btnNewButton = new JButton("Valider");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnAdhValider = new JButton("Valider");
+		btnAdhValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (verificationFormulaire()!=true) {
+				if (verificationFormulaire()==true) {
 					Adherent adh1 = new Adherent(
 							//1,
 							"A",
@@ -614,8 +630,6 @@ public class JFformulaireAdherents extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				}else {
-					JOptionPane.showMessageDialog(contentPane,"ERREUR : Des chambres n'ont pas été bien saisis, modifier les champs en rouge ");
 				}
 
 				
@@ -649,9 +663,9 @@ public class JFformulaireAdherents extends JFrame {
 				
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setBounds(440, 568, 160, 38);
-		contentPane.add(btnNewButton);
+		btnAdhValider.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnAdhValider.setBounds(440, 568, 160, 38);
+		contentPane.add(btnAdhValider);
 		
 		JButton btnReinitialiser = new JButton("Réinitialiser");
 		btnReinitialiser.addMouseListener(new MouseAdapter() {
