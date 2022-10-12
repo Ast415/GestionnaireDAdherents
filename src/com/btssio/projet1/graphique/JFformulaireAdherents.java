@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.btssio.projet1.classe.Adherent;
+import com.btssio.projet1.classe.lectureXML;
+import com.btssio.projet1.classe.ecritureXML;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -38,6 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 public class JFformulaireAdherents extends JFrame {
 
@@ -545,10 +548,10 @@ public class JFformulaireAdherents extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(contentPane,verificationFormulaire());
-				if (verificationFormulaire()==false) {
+				if (verificationFormulaire()!=true) {
 					Adherent adh1 = new Adherent(
 							1,
-							txtfAdhNom.getText(),
+							"A",
 							"bories",
 							"bastien",
 							"29/01/2002",
@@ -572,9 +575,14 @@ public class JFformulaireAdherents extends JFrame {
 							false,
 							false,
 							1,
-							"");
-					
-					JOptionPane.showMessageDialog(contentPane,adh1);
+							"edcdccdcdc");
+
+					try {
+						ecritureXML.newAdherant(adh1);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 
 				
