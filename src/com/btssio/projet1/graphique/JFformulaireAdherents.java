@@ -575,7 +575,7 @@ public class JFformulaireAdherents extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (verificationFormulaire()!=true) {
 					Adherent adh1 = new Adherent(
-							1,
+							//1,
 							"A",
 							"bories",
 							"bastien",

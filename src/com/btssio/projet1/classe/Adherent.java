@@ -237,13 +237,13 @@ public class Adherent {
 		this.aideMobil = aideMobil;
 	}
 
-	public Adherent(int idAdherent, String nom, String nomDeNaissance, String prenom, String dateDeNaissance,
+	public Adherent(/*int idAdherent,*/ String nom, String nomDeNaissance, String prenom, String dateDeNaissance,
 			String nationalite, String paysDeNaissance, String genre, String villeDeNaissance, int cp, String ville,
 			String adresse, int numeroDeTelephone1, int numeroDeTelephone2, String courriel, String nomPrenomLegal,
 			String arme, String pratique, String lateralité, String categorie, Boolean licenceFFE, Boolean assurance,
 			Boolean seancesTir, Boolean reducFamille, int reducFamilleEmeMembre, String aideMobil) {
 		super();
-		this.idAdherent = idAdherent;
+		//this.idAdherent = idAdherent;
 		this.nom = nom;
 		this.nomDeNaissance = nomDeNaissance;
 		this.prenom = prenom;

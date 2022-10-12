@@ -94,6 +94,7 @@ public class lectureXML {
 		boolean licenceFFE, assurance, seancesTir, reducFamille;
 
 		try {
+
 			File file = new File("src/xml/adherent.xml");
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
@@ -128,7 +129,7 @@ public class lectureXML {
 						reducFamille = false;
 					}
 
-					newcategorie = new Adherent(Integer.parseInt(eElement.getAttribute("id")),
+					newcategorie = new Adherent(
 							eElement.getElementsByTagName("nom").item(0).getTextContent(),
 							eElement.getElementsByTagName("nomDeNaissance").item(0).getTextContent(),
 							eElement.getElementsByTagName("prenom").item(0).getTextContent(),
@@ -160,6 +161,7 @@ public class lectureXML {
 				}
 			}
 		} catch (IOException e) {
+			System.out.println("5");
 			System.out.println(e);
 		}
 

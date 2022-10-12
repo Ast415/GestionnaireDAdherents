@@ -173,7 +173,7 @@ public class ecritureXML {
 	}
 	
 	public static void main(String[]args) throws ParserConfigurationException, SAXException, IOException {
-		Adherent test = new Adherent(0, null, null, null, null, null, null, null, null, 0, null, null, 0, 0, null, null, null, null, null, null, true, true, true, true, 0, null);
+		Adherent test = new Adherent( null, null, null, null, null, null, null, null, 0, null, null, 0, 0, null, null, null, null, null, null, true, true, true, true, 0, null);
 		newAdherant(test);
 		
 	}
