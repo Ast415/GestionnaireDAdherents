@@ -8,6 +8,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class JFformulaireMenu extends JFrame {
 
@@ -33,6 +36,7 @@ public class JFformulaireMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public JFformulaireMenu() {
+		setTitle("Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Quitte l'application.
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -42,6 +46,7 @@ public class JFformulaireMenu extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Ajouter");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JFformulaireAdherents.formEstOuvert==false) {//Si la formulaire adhérent est fermée 
@@ -50,10 +55,11 @@ public class JFformulaireMenu extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(77, 218, 137, 32);
+		btnNewButton.setBounds(76, 126, 137, 32);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Afficher");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JFformulaireAfficher.formEstOuvert==false) {//Si la formulaire adhérent est fermée 
@@ -62,7 +68,13 @@ public class JFformulaireMenu extends JFrame {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(224, 218, 137, 32);
+		btnNewButton_1.setBounds(223, 126, 137, 32);
 		contentPane.add(btnNewButton_1);
+		
+		JLabel lblNewLabel = new JLabel("Menu du gestionnaire des adhérents");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel.setBounds(10, 30, 414, 74);
+		contentPane.add(lblNewLabel);
 	}
 }
