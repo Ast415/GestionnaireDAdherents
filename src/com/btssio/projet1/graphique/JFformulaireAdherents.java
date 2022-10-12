@@ -113,7 +113,7 @@ public class JFformulaireAdherents extends JFrame {
 	}
 	
 	
-	public boolean testSiInt(JTextField UnChampDeText) {
+	public boolean estUneValeurEntiere(JTextField UnChampDeText) {
 		try {
 			int i = Integer.valueOf(UnChampDeText.getText());
 			return true;
@@ -131,7 +131,7 @@ public class JFformulaireAdherents extends JFrame {
 		
 	}
 	
-	public boolean valeurMinMax(JTextField UnChampDeText, int LaTailleMin, int LaTailleMax) {
+	public boolean bonneEtendue(JTextField UnChampDeText, int LaTailleMin, int LaTailleMax) {
 		if(Integer.valueOf(UnChampDeText.getText())<LaTailleMin || Integer.valueOf(UnChampDeText.getText())>LaTailleMax) {
 			return false;
 		}else {
@@ -158,14 +158,32 @@ public class JFformulaireAdherents extends JFrame {
 		return verification;
 	}
 	
-	public boolean tousOnUneBonneValeur() {
+	public boolean tousOnUneBonneEtendue() {
 		boolean verification;
-		verification = valeurMinMax(txtfAdhDateNaissJ,1,31);
+		verification = bonneEtendue(txtfAdhDateNaissJ,1,31);
 		if (verification == true) {
-			verification = valeurMinMax(txtfAdhDateNaissM,1,12);
+			verification = bonneEtendue(txtfAdhDateNaissM,1,12);
 		}
 		if (verification == true) {
-			verification = valeurMinMax(txtfAdhDateNaissA,1900,2100);
+			verification = bonneEtendue(txtfAdhDateNaissA,1900,2100);
+		}
+		return verification;
+	}
+	
+	public boolean tousSontDesValeurEntiere() {
+		boolean verification;
+		verification = estUneValeurEntiere(txtfAdhDateNaissJ);
+		if (verification == true) {
+			verification = estUneValeurEntiere(txtfAdhDateNaissM);
+		}
+		if (verification == true) {
+			verification = estUneValeurEntiere(txtfAdhDateNaissA);
+		}
+		if (verification == true) {
+			verification = estUneValeurEntiere(txtfAdhTel1);
+		}
+		if (verification == true) {
+			verification = estUneValeurEntiere(txtfAdhTel2);
 		}
 		return verification;
 	}
@@ -177,7 +195,10 @@ public class JFformulaireAdherents extends JFrame {
 			verification=tousDeBonneTaille();
 		}
 		if (verification == true) {
-			verification=tousOnUneBonneValeur();
+			verification=tousSontDesValeurEntiere();
+		}
+		if (verification == true) {
+			verification=tousOnUneBonneEtendue();
 		}
 		return verification;
 	}
@@ -547,7 +568,6 @@ public class JFformulaireAdherents extends JFrame {
 		JButton btnNewButton = new JButton("Valider");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(contentPane,verificationFormulaire());
 				if (verificationFormulaire()!=true) {
 					Adherent adh1 = new Adherent(
 							1,
@@ -576,13 +596,15 @@ public class JFformulaireAdherents extends JFrame {
 							false,
 							1,
 							"edcdccdcdc");
-
+					JOptionPane.showMessageDialog(contentPane,"Les information sont valide");
 					try {
 						ecritureXML.newAdherant(adh1);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+				}else {
+					JOptionPane.showMessageDialog(contentPane,"ERREUR : Des chambres n'ont pas été bien saisis, modifier les champs en rouge ");
 				}
 
 				

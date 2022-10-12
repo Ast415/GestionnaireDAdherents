@@ -9,7 +9,6 @@ import org.xml.sax.SAXException;
 public class Program {
 	public static void main(String[]args) throws ParserConfigurationException, SAXException {
 		
-		
 	}
 
 }
