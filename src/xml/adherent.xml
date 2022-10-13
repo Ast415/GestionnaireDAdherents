@@ -9,11 +9,11 @@
 		<paysDeNaissance></paysDeNaissance>
 		<genre></genre>
 		<villeDeNaissance></villeDeNaissance>
-		<cp></cp>
+		<cp>5</cp>
 		<ville></ville>
 		<adresse></adresse>
-		<numeroDeTelephone1></numeroDeTelephone1>
-		<numeroDeTelephone2></numeroDeTelephone2>
+		<numeroDeTelephone1>7</numeroDeTelephone1>
+		<numeroDeTelephone2>2</numeroDeTelephone2>
 		<courriel></courriel>
 		<nomPrenomLegal></nomPrenomLegal>
 		<arme></arme>
@@ -24,7 +24,7 @@
 		<assurance></assurance>
 		<seancesTir></seancesTir>
 		<reducFamille></reducFamille>
-		<reducFamilleEmeMembre></reducFamilleEmeMembre>
+		<reducFamilleEmeMembre>5</reducFamilleEmeMembre>
 		<aideMobil></aideMobil>
 	</adherent>
 </adherent>

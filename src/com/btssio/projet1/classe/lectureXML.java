@@ -171,5 +171,9 @@ public class lectureXML {
 
 		return lesAdherent;
 	}
+	
+	public static void main(String[]args) throws ParserConfigurationException, SAXException {
+		importationXMLadherent();
+	}
 
 }

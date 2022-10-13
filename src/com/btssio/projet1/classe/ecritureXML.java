@@ -13,6 +13,8 @@ import org.w3c.dom.*;
 
 
 public class ecritureXML {
+	
+	//convertire bool en string (1 vrais 0 faux)
 	private static String trueOrFals(Boolean val) {
 		String result;
 		
@@ -25,9 +27,10 @@ public class ecritureXML {
 		return result;
 	}
 	
+	//convetire int en string
 	private static String intToString(int val) {
 		String result;
-		
+			
 		result = val+"";
 		
 		return result;
