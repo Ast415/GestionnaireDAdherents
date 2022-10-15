@@ -592,7 +592,7 @@ public class JFformulaireAdherents extends JFrame {
 		btnAdhValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//On effectué un test pour vérifier que les informations d'enfant lui reçoivent bon 
-				if (verificationFormulaire()==true) {
+				if (verificationFormulaire()!=true) {
 					String Genre;
 					String Arme="";
 					String Pratique;
@@ -686,8 +686,14 @@ public class JFformulaireAdherents extends JFrame {
 							false,
 							false,
 							1,
-							"");
-					JOptionPane.showMessageDialog(contentPane,"Les information sont valide");
+							"aaa");
+					//JOptionPane.showMessageDialog(contentPane,"Les information sont valide");
+					/*try {
+						JOptionPane.showMessageDialog(contentPane,lectureXML.importationXMLadherent().size());
+					} catch (HeadlessException | ParserConfigurationException | SAXException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}*/
 					//Écriture de l'adhérent dans le fichier XML
 					try {
 						ecritureXML.newAdherant(adh2);
@@ -695,10 +701,11 @@ public class JFformulaireAdherents extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					//Test de lecture A SUPPRIMER
+					
 					try {
-						JOptionPane.showMessageDialog(contentPane,lectureXML.importationXMLadherent());
-					} catch (HeadlessException | ParserConfigurationException | SAXException e1) {
+						System.out.println(lectureXML.importationXMLadherent().size());
+						System.out.println(lectureXML.importationXMLadherent().get(1).getNom());
+					} catch (ParserConfigurationException | SAXException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
