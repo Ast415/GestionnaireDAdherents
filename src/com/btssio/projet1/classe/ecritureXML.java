@@ -2,6 +2,7 @@ package com.btssio.projet1.classe;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import javax.xml.parsers.*; 
 import javax.xml.transform.*; 
@@ -49,126 +50,159 @@ public class ecritureXML {
 	        dom = db.newDocument();
 
 	        // create the root element
-	        Element rootEle = dom.createElement("adherents");
+
+	        Element rootEle = dom.createElement("adherent");
+	        Element uneEntite = dom.createElement("adherent");
+	        
+	        
+	        
 	        
 	        // create data elements and place them under root
 	        e = dom.createElement("nom");
 	        e.appendChild(dom.createTextNode(newAdherent.getNom()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
+	        
+	        e = dom.createElement("nomDeNaissance");
+	        e.appendChild(dom.createTextNode(newAdherent.getNomDeNaissance()));
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("prenom");
 	        e.appendChild(dom.createTextNode(newAdherent.getPrenom()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 
 	        e = dom.createElement("dateDeNaissance");
 	        e.appendChild(dom.createTextNode(newAdherent.getDateDeNaissance()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
+	        
+            //System.out.println(newAdherent.getNom().getClass());
+            //System.out.println(dom.createTextNode(newAdherent.getNom()).getClass());
+            //System.out.println(e.getClass());
+            //System.out.println(dom.getClass());
+            //System.out.println("----------------------------");
+            //System.out.println(rootEle.getChildNodes().item(0).getChildNodes().item(0).getNodeValue());
 	        
 	        e = dom.createElement("nationalite");
 	        e.appendChild(dom.createTextNode(newAdherent.getNationalite()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("paysDeNaissance");
 	        e.appendChild(dom.createTextNode(newAdherent.getPaysDeNaissance()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("genre");
 	        e.appendChild(dom.createTextNode(newAdherent.getGenre()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("villeDeNaissance");
 	        e.appendChild(dom.createTextNode(newAdherent.getVilleDeNaissance()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("cp");
 	        e.appendChild(dom.createTextNode(intToString(newAdherent.getCp())));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("ville");
 	        e.appendChild(dom.createTextNode(newAdherent.getVille()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("adresse");
 	        e.appendChild(dom.createTextNode(newAdherent.getAdresse()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("numeroDeTelephone1");
 	        e.appendChild(dom.createTextNode(intToString(newAdherent.getNumeroDeTelephone1())));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("numeroDeTelephone2");
 	        e.appendChild(dom.createTextNode(intToString(newAdherent.getNumeroDeTelephone2())));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("courriel");
 	        e.appendChild(dom.createTextNode(newAdherent.getCourriel()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("nomPrenomLegal");
 	        e.appendChild(dom.createTextNode(newAdherent.getNomPrenomLegal()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("arme");
 	        e.appendChild(dom.createTextNode(newAdherent.getArme()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("pratique");
 	        e.appendChild(dom.createTextNode(newAdherent.getPratique()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("lateralite");
 	        e.appendChild(dom.createTextNode(newAdherent.getLateralité()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("categorie");
 	        e.appendChild(dom.createTextNode(newAdherent.getCategorie()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("licenceFFE");
 	        e.appendChild(dom.createTextNode(trueOrFals(newAdherent.getLicenceFFE())));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("assurance");
 	        e.appendChild(dom.createTextNode(trueOrFals(newAdherent.getAssurance())));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("seancesTir");
 	        e.appendChild(dom.createTextNode(trueOrFals(newAdherent.getSeancesTir())));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("reducFamille");
 	        e.appendChild(dom.createTextNode(trueOrFals(newAdherent.getReducFamille())));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("reducFamilleEmeMembre");
 	        e.appendChild(dom.createTextNode(intToString(newAdherent.getReducFamilleEmeMembre())));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
 	        
 	        e = dom.createElement("aideMobil");
 	        e.appendChild(dom.createTextNode(newAdherent.getAideMobil()));
-	        rootEle.appendChild(e);
+	        uneEntite.appendChild(e);
+	        
+	        //_____________________________
+	        
+	        //e = dom.createElement("adherent");
+	        //e.appendChild(rootEle);
+	        //test.appendChild(e);
+	        
+	        Attr attr = dom.createAttribute("id");
+	        attr.setValue("0");
+	        uneEntite.setAttributeNode(attr);
+	        
+	        rootEle.appendChild(uneEntite);
+	        
+	        //test pour verifier le contenue
+	        //for (int i=0; i<rootEle.getChildNodes().getLength() ; i++) {
+	        //	System.out.println(rootEle.getChildNodes().item(i).getChildNodes().item(0).getNodeValue());
+	        //}
 	        
 	        try {
 	            Transformer tr = TransformerFactory.newInstance().newTransformer();
 	            tr.setOutputProperty(OutputKeys.INDENT, "yes");
 	            tr.setOutputProperty(OutputKeys.METHOD, "xml");
 	            tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-	            tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "roles.dtd");
+	            //tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "roles.dtd");
 	            tr.setOutputProperty("{http://xml.Apache.org/xslt}indent-amount", "4");
 	            
 	            //test
-	            System.out.println("1");
+	            System.out.println("connexion fichier");
 	            
 	            // send DOM to file
-	            tr.transform(new DOMSource(dom), new StreamResult(new FileOutputStream("xml")));
+	            tr.transform(new DOMSource(rootEle), new StreamResult(new FileOutputStream("src/xml/adherent.xml")));
 	            
 	            //test
-	    	    System.out.println("2");
+	    	    System.out.println("connexion ok");
 	        } catch (TransformerException te) {
 	            System.out.println(te.getMessage());
 	            
 	            //test
-		        System.out.println("3");
+		        System.out.println("pas ok");
 	        }
 	    } catch (ParserConfigurationException pce) {
 	        System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
