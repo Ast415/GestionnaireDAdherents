@@ -52,6 +52,13 @@ public class ecritureXML {
 	        // create the root element
 
 	        Element rootEle = dom.createElement("adherent");
+	        Element xmlFile = dom.createElement("adherent");
+			try {
+				xmlFile = lectureXML.importationBrutXMLadherent();
+			} catch (SAXException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 	        Element uneEntite = dom.createElement("adherent");
 	        
 	        
@@ -170,17 +177,70 @@ public class ecritureXML {
 	        //e = dom.createElement("adherent");
 	        //e.appendChild(rootEle);
 	        //test.appendChild(e);
+
+	        /*System.out.println("test : "+rootEle.getChildNodes().getLength());
+	        System.out.println("test : "+uneEntite.getChildNodes().getLength());
+	        //uneEntite2.appendChild(uneEntite.getChildNodes().item(0));
+	        rootEle.appendChild(dom.createElement(xmlFile.getChildNodes().item(0).getNodeName()));
+	        rootEle.getChildNodes().item(0).appendChild(dom.createElement(xmlFile.getChildNodes().item(0).getChildNodes().item(0).getNodeName()));
+	        System.out.println(rootEle.getChildNodes().item(0).getChildNodes().item(0).getNodeName());
+	        */
 	        
-	        Attr attr = dom.createAttribute("id");
-	        attr.setValue("0");
-	        uneEntite.setAttributeNode(attr);
-	        
+	        for (int i=0; i<xmlFile.getChildNodes().getLength(); i++) {
+	        	e = dom.createElement(xmlFile.getChildNodes().item(i).getNodeName());
+	        	e.setAttribute("id", intToString(i));
+	        	rootEle.appendChild(e);
+		        
+		        for(int j=0;j<xmlFile.getChildNodes().item(i).getChildNodes().getLength();j++) {
+		        	rootEle.getChildNodes().item(i).appendChild(dom.createElement(xmlFile.getChildNodes().item(i).getChildNodes().item(j).getNodeName()));
+		        	rootEle.getChildNodes().item(i).getChildNodes().item(j).appendChild(dom.createTextNode(xmlFile.getChildNodes().item(i).getChildNodes().item(j).getTextContent()));
+		        }
+		        
+	        }
+        	uneEntite.setAttribute("id", intToString(xmlFile.getChildNodes().getLength()));
 	        rootEle.appendChild(uneEntite);
+	        //rootEle = dom.createElement("adherent");
+	        
+	        
+	        //uneEntite2.setAttribute("id", "1");
+	        //rootEle.appendChild(uneEntite2);
+	        
+	        
+	        /*for (int j=1;j<4;j++) {
+	        	String nb = intToString(j);
+	        	e = dom.createElement("adherent");
+	        	e.setAttribute("id", nb);
+	        	rootEle.appendChild(e);
+	        	//try {
+	        	//	System.out.println(nb+" : "+rootEle.getElementsByTagName("test").item(j-1).getAttributes());
+	        	//}catch (Exception e1) {
+	        	//	System.out.println("err");
+	        	//}
+	        	
+		        //rootEle.getElementsByTagName("test").item(0).appendChild(dom.createTextNode("test"));
+		        
+		        for (int i=0; i<25 ; i++) {
+		        	String eName = uneEntite.getChildNodes().item(i).getNodeName();
+		        	//System.out.println(uneEntite.getChildNodes().getLength()+" "+i);
+		        	String eVal = uneEntite.getChildNodes().item(i).getChildNodes().item(0).getNodeValue();
+		        	//System.out.println(eVal);
+		        	rootEle.getElementsByTagName("adherent").item(j).appendChild(dom.createElement(eName));
+		        	rootEle.getElementsByTagName("adherent").item(j).getChildNodes().item(i).appendChild(dom.createTextNode(eVal));
+
+		        }
+	        }*/
+	        
+			//System.out.println(rootEle.getChildNodes().getLength());
+
+	        
+	        
+	        //rootEle.appendChild(dom.createElement("test"));
 	        
 	        //test pour verifier le contenue
 	        //for (int i=0; i<rootEle.getChildNodes().getLength() ; i++) {
 	        //	System.out.println(rootEle.getChildNodes().item(i).getChildNodes().item(0).getNodeValue());
 	        //}
+	        
 	        
 	        try {
 	            Transformer tr = TransformerFactory.newInstance().newTransformer();
