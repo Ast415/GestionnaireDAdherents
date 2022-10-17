@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><adherent>
     <adherent id="0">
-        <nom>A</nom>
+        <nom>Avdvdf</nom>
         <nomDeNaissance>bories</nomDeNaissance>
         <prenom>bastien</prenom>
         <dateDeNaissance>29/01/2002</dateDeNaissance>
         <nationalite>francais</nationalite>
-        <paysDeNaissance>France</paysDeNaissance>
+        <paysDeNaissance>Fradddddnce</paysDeNaissance>
         <genre>Masculin</genre>
         <villeDeNaissance>Castres</villeDeNaissance>
         <cp>31400</cp>
@@ -24,6 +24,33 @@
         <seancesTir>0</seancesTir>
         <reducFamille>0</reducFamille>
         <reducFamilleEmeMembre>1</reducFamilleEmeMembre>
-        <aideMobil>aaa</aideMobil>
+        <aideMobil>tst</aideMobil>
+    </adherent>
+    <adherent id="1">
+        <nom>BGSZVSG</nom>
+        <nomDeNaissance>GSZVSG</nomDeNaissance>
+        <prenom>bassgstien</prenom>
+        <dateDeNaissance>29/01/2002</dateDeNaissance>
+        <nationalite>franvsscais</nationalite>
+        <paysDeNaissance>Fradddddnce</paysDeNaissance>
+        <genre>Masculin</genre>
+        <villeDeNaissance>Castres</villeDeNaissance>
+        <cp>31400</cp>
+        <ville>Toulouse</ville>
+        <adresse>118 Rte de Narbonne</adresse>
+        <numeroDeTelephone1>781818181</numeroDeTelephone1>
+        <numeroDeTelephone2>781818181</numeroDeTelephone2>
+        <courriel>b0728382@gmail.com</courriel>
+        <nomPrenomLegal/>
+        <arme>Fleuret</arme>
+        <pratique>Loisir</pratique>
+        <lateralite>Droitier</lateralite>
+        <categorie>Éveil</categorie>
+        <licenceFFE>0</licenceFFE>
+        <assurance>0</assurance>
+        <seancesTir>0</seancesTir>
+        <reducFamille>0</reducFamille>
+        <reducFamilleEmeMembre>1</reducFamilleEmeMembre>
+        <aideMobil>tst</aideMobil>
     </adherent>
 </adherent>
