@@ -87,6 +87,52 @@ public class lectureXML {
 		}
 		return lesCategorie;
 	}
+	
+	public static Element importationBrutXMLadherent() throws ParserConfigurationException, SAXException{
+		
+		try {
+
+			File file = new File("src/xml/adherent.xml");
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document document = db.parse(file);
+			document.getDocumentElement().normalize();
+
+			NodeList nList = document.getElementsByTagName("adherent");
+
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				//System.out.println("IBXML : "+nNode.getChildNodes().item(2).getTextContent());
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element eElement = (Element) nNode;
+					//hé supprime les lignes vides
+					for (int i=0;i<eElement.getChildNodes().getLength()-1;i++) {
+			        	if (eElement.getChildNodes().item(i).getNodeName()=="#text") {
+			        		eElement.removeChild(eElement.getChildNodes().item(i));
+			        	}
+			        	for (int j=0;j<eElement.getChildNodes().item(i).getChildNodes().getLength();j++) {
+			        		if (eElement.getChildNodes().item(i).getChildNodes().item(j).getNodeName()=="#text") {
+			        			eElement.getChildNodes().item(i).removeChild(eElement.getChildNodes().item(i).getChildNodes().item(j));
+				        	}
+			        	}
+			        }
+					if(eElement.getLastChild().getNodeName()=="#text") {
+						eElement.removeChild(eElement.getLastChild());
+					}
+					
+					return eElement;
+					
+				}
+			}
+					
+		}catch (IOException e) {
+			System.out.println(e);
+		}
+		
+		return null;
+		
+		
+	}
 
 	public static ArrayList<Adherent> importationXMLadherent() throws ParserConfigurationException, SAXException {
 		ArrayList<Adherent> lesAdherent = new ArrayList<Adherent>();
@@ -107,6 +153,10 @@ public class lectureXML {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
+					
+					if(eElement.getChildNodes().getLength()==1) {
+						return null;
+					}
 
 					if (eElement.getElementsByTagName("licenceFFE").item(0).getTextContent() == "1") {
 						licenceFFE = true;
