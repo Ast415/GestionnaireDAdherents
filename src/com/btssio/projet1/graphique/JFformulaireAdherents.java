@@ -592,7 +592,7 @@ public class JFformulaireAdherents extends JFrame {
 		btnAdhValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//On effectué un test pour vérifier que les informations d'enfant lui reçoivent bon 
-				if (verificationFormulaire()!=true) {
+				if (verificationFormulaire()==true) {
 					String Genre;
 					String Arme="";
 					String Pratique;
@@ -629,7 +629,7 @@ public class JFformulaireAdherents extends JFrame {
 					}
 					
 					//Création de l'adhérent à partir du formulaire 
-					/*//NE PAS SUPPRIMER version finale de l'instanciaition de adhérent
+					//NE PAS SUPPRIMER version finale de l'instanciaition de adhérent
 					Adherent adh = new Adherent(
 							txtfAdhNom.getText(),
 							txtfAdhNomNaiss.getText(),
@@ -657,17 +657,17 @@ public class JFformulaireAdherents extends JFrame {
 							false,
 							false,
 							1,
-							"");*/
+							"");
 					
 					//Adherent test, a supprimer
-					Adherent adh2 = new Adherent(
+					/*Adherent adh2 = new Adherent(
 							//1,
-							"A",
+							"Avdvdf",
 							"bories",
 							"bastien",
 							"29/01/2002",
 							"francais",
-							"France",
+							"Fradddddnce",
 							Genre,
 							"Castres",
 							31400,
@@ -686,8 +686,8 @@ public class JFformulaireAdherents extends JFrame {
 							false,
 							false,
 							1,
-							"aaa");
-					//JOptionPane.showMessageDialog(contentPane,"Les information sont valide");
+							"tst");*/
+					JOptionPane.showMessageDialog(contentPane,"Les information sont valide");
 					/*try {
 						JOptionPane.showMessageDialog(contentPane,lectureXML.importationXMLadherent().size());
 					} catch (HeadlessException | ParserConfigurationException | SAXException e2) {
@@ -696,19 +696,19 @@ public class JFformulaireAdherents extends JFrame {
 					}*/
 					//Écriture de l'adhérent dans le fichier XML
 					try {
-						ecritureXML.newAdherant(adh2);
+						ecritureXML.newAdherant(adh);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					
-					try {
+					/*try {
 						System.out.println(lectureXML.importationXMLadherent().size());
-						System.out.println(lectureXML.importationXMLadherent().get(1).getNom());
+						System.out.println(lectureXML.importationXMLadherent().get(3).getNom());
 					} catch (ParserConfigurationException | SAXException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					}
+					}*/
 				}
 			}
 		});
