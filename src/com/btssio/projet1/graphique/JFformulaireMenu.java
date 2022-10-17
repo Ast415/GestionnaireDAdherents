@@ -5,11 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import com.btssio.projet1.classe.lectureXML;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 public class JFformulaireMenu extends JFrame {
@@ -63,8 +72,17 @@ public class JFformulaireMenu extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JFformulaireAfficher.formEstOuvert==false) {//Si la formulaire adhérent est fermée 
-					JFformulaireAfficher.formEstOuvert=true;//Alors on définit la variable comme true
-					new JFformulaireAfficher().setVisible(true);//Et on ouvre le formulaire 
+					try {
+						if (lectureXML.importationXMLadherent()==null) {
+							JOptionPane.showMessageDialog(contentPane,"Il n'y a pas d'ahderent enregistrer");
+						}else {
+							JFformulaireAfficher.formEstOuvert=true;//Alors on définit la variable comme true
+							new JFformulaireAfficher().setVisible(true);//Et on ouvre le formulaire 
+						}
+					} catch (HeadlessException | ParserConfigurationException | SAXException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
