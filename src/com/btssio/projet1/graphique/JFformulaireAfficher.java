@@ -9,8 +9,12 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 import com.btssio.projet1.classe.Adherent;
+import com.btssio.projet1.classe.lectureXML;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -22,7 +26,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import java.util.regex.*;
 
 public class JFformulaireAfficher extends JFrame {
 
@@ -30,67 +36,16 @@ public class JFformulaireAfficher extends JFrame {
 	private JTextField txtfAffIDAdh;
 	private JTextPane txtpAffResultat;
 	protected static boolean formEstOuvert = false;//Variable permettant de déterminer si la fenêtre est ouverte ou non 
-	//Ha adhérent de test 
-	private Adherent testAdh1 = new Adherent(
-			//2,
-			"duval",
-			"duval",
-			"edourd",
-			"10/02/1997",
-			"francais",
-			"France",
-			"homme",
-			"Castres",
-			57130,
-			"Sainte-Ruffine",
-			"26 Rue du Gros Chine",
-			781818181,
-			781818181,
-			"b0728382@gmail.com",
-			"",
-			"Fleuret",
-			"Loisir",
-			"Droitier",
-			"Eveil",
-			false,
-			false,
-			false,
-			false,
-			1,
-			"edcdccdcdc");
-	private Adherent testAdh2 = new Adherent(
-			//3,
-			"Ren",
-			"Ren",
-			"Allard",
-			"20/11/1983",
-			"francais",
-			"France",
-			"homme",
-			"Castres",
-			14330,
-			"Tournires",
-			"27 Rue du Moulin Cass",
-			781818181,
-			781818181,
-			"b0728382@gmail.com",
-			"",
-			"Epee",
-			"Compétitive",
-			"Gaucher",
-			"Minimes",
-			false,
-			false,
-			false,
-			false,
-			1,
-			"edcdccdcdc");
-	//Hé liste des adhérents de test 
-	private ArrayList<Adherent> lesTestAdherent = new ArrayList<Adherent>();
+	private ArrayList<Adherent> lesAdherent = new ArrayList<Adherent>();
 	
 	public void init() {
-		lesTestAdherent.add(testAdh1);
-		lesTestAdherent.add(testAdh2);
+		
+		try {
+			lesAdherent=lectureXML.importationXMLadherent();
+		} catch (ParserConfigurationException | SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -133,30 +88,34 @@ public class JFformulaireAfficher extends JFrame {
 		JButton btnAffValider = new JButton("Valider");
 		btnAffValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Hé on va récupérer la valeur qu'il y a dans le champ 
-				int idAdherent = Integer.valueOf(txtfAffIDAdh.getText());
-				//Si cette valeur est une entité dans la liste des adhérents alors on affiche ces informations
-				//Hé dans la liste adhérent la position de l'adhérent est son identifiant sont la même chose 
-				if (idAdherent<lesTestAdherent.size() && idAdherent>=0) {
-					txtpAffResultat.setForeground(new Color(0, 0, 0));//Mets la couleur du texte en noir 
-					txtpAffResultat.setText(
-							  "Nom : "+lesTestAdherent.get(idAdherent).getNom()
-							+ "\nPrenom : "+lesTestAdherent.get(idAdherent).getPrenom()
-							+ "\nDate de naissance : "+lesTestAdherent.get(idAdherent).getDateDeNaissance()
-							+ "\nGenre : "+lesTestAdherent.get(idAdherent).getGenre()
-							+ "\nVille : "+lesTestAdherent.get(idAdherent).getVille()
-							+ "\nCode postal : "+lesTestAdherent.get(idAdherent).getCp()
-							+ "\nAdresse : "+lesTestAdherent.get(idAdherent).getAdresse()
-							+ "\nNuméro de téléphone 1 : 0"+lesTestAdherent.get(idAdherent).getNumeroDeTelephone1()
-							+ "\nNuméro de téléphone 2 : 0"+lesTestAdherent.get(idAdherent).getNumeroDeTelephone2()
-							+ "\nCourriel : "+lesTestAdherent.get(idAdherent).getCourriel()
-							+ "\nArme : "+lesTestAdherent.get(idAdherent).getArme()
-							+ "\nPratique : "+lesTestAdherent.get(idAdherent).getPratique()
-							+ "\nLatéralité : "+lesTestAdherent.get(idAdherent).getLateralité()
-							+ "\nCatégotrie : "+lesTestAdherent.get(idAdherent).getCategorie());
+				if (Pattern.matches("[0-9]+", txtfAffIDAdh.getText())) {
+					//Hé on va récupérer la valeur qu'il y a dans le champ 
+					int idAdherent = Integer.valueOf(txtfAffIDAdh.getText())+1;
+					//Si cette valeur est une entité dans la liste des adhérents alors on affiche ces informations
+					//Hé dans la liste adhérent la position de l'adhérent est son identifiant sont la même chose 
+					if (idAdherent<lesAdherent.size() && idAdherent>=0) {
+						txtpAffResultat.setForeground(new Color(0, 0, 0));//Mets la couleur du texte en noir 
+						txtpAffResultat.setText(
+								  "Nom : "+lesAdherent.get(idAdherent).getNom()
+								+ "\nPrenom : "+lesAdherent.get(idAdherent).getPrenom()
+								+ "\nDate de naissance : "+lesAdherent.get(idAdherent).getDateDeNaissance()
+								+ "\nGenre : "+lesAdherent.get(idAdherent).getGenre()
+								+ "\nVille : "+lesAdherent.get(idAdherent).getVille()
+								+ "\nCode postal : "+lesAdherent.get(idAdherent).getCp()
+								+ "\nAdresse : "+lesAdherent.get(idAdherent).getAdresse()
+								+ "\nNuméro de téléphone 1 : 0"+lesAdherent.get(idAdherent).getNumeroDeTelephone1()
+								+ "\nNuméro de téléphone 2 : 0"+lesAdherent.get(idAdherent).getNumeroDeTelephone2()
+								+ "\nCourriel : "+lesAdherent.get(idAdherent).getCourriel()
+								+ "\nArme : "+lesAdherent.get(idAdherent).getArme()
+								+ "\nPratique : "+lesAdherent.get(idAdherent).getPratique()
+								+ "\nLatéralité : "+lesAdherent.get(idAdherent).getLateralité()
+								+ "\nCatégotrie : "+lesAdherent.get(idAdherent).getCategorie());
+					}else {
+						txtpAffResultat.setForeground(new Color(213, 26, 0));//Hé mets la couleur du texte en rouge 
+						txtpAffResultat.setText("Cet identifiant n'est pas reconnu, veuillez essayer un autre identifiant ");
+					}
 				}else {
-					txtpAffResultat.setForeground(new Color(213, 26, 0));//Hé mets la couleur du texte en rouge 
-					txtpAffResultat.setText("Cet identifiant n'est pas reconnu, veuillez essayer un autre identifiant ");
+					JOptionPane.showMessageDialog(contentPane,"Ce qui est saisi dans le champ n'est pas une valeur");
 				}
 			}
 		});
@@ -188,5 +147,11 @@ public class JFformulaireAfficher extends JFrame {
 		txtpAffResultat.setBounds(339, 113, 396, 340);
 		contentPane.add(txtpAffResultat);
 		init();
+		JLabel lblAffIDAdhNb = new JLabel("Il existe "+(lesAdherent.size()-1)+" adhérents ");
+		lblAffIDAdhNb.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAffIDAdhNb.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblAffIDAdhNb.setBounds(10, 189, 282, 38);
+		contentPane.add(lblAffIDAdhNb);
+		
 	}
 }
