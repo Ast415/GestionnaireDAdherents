@@ -50,8 +50,10 @@ public class ecritureXML {
 	        dom = db.newDocument();
 
 	        // create the root element
-
+	        
+	        //Contiendra le fichier adherent.xml + les nouvelle adherent du formulaire
 	        Element rootEle = dom.createElement("adherent");
+	        //Contiendra le fichier adherent.xml
 	        Element xmlFile = dom.createElement("adherent");
 			try {
 				xmlFile = lectureXML.importationBrutXMLadherent();
@@ -59,15 +61,16 @@ public class ecritureXML {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			//les element du nouvelle adherent
 	        Element uneEntite = dom.createElement("adherent");
 	        
 	        
 	        
 	        
 	        // create data elements and place them under root
-	        e = dom.createElement("nom");
-	        e.appendChild(dom.createTextNode(newAdherent.getNom()));
-	        uneEntite.appendChild(e);
+	        e = dom.createElement("nom");//Cree un element "Nom"
+	        e.appendChild(dom.createTextNode(newAdherent.getNom()));//Ajoute pour l'element "Nom" la valeur de newAdherent.getNom()
+	        uneEntite.appendChild(e);//Ajoute c'est element et ça valeur dans uneEntite
 	        
 	        e = dom.createElement("nomDeNaissance");
 	        e.appendChild(dom.createTextNode(newAdherent.getNomDeNaissance()));
@@ -80,13 +83,6 @@ public class ecritureXML {
 	        e = dom.createElement("dateDeNaissance");
 	        e.appendChild(dom.createTextNode(newAdherent.getDateDeNaissance()));
 	        uneEntite.appendChild(e);
-	        
-            //System.out.println(newAdherent.getNom().getClass());
-            //System.out.println(dom.createTextNode(newAdherent.getNom()).getClass());
-            //System.out.println(e.getClass());
-            //System.out.println(dom.getClass());
-            //System.out.println("----------------------------");
-            //System.out.println(rootEle.getChildNodes().item(0).getChildNodes().item(0).getNodeValue());
 	        
 	        e = dom.createElement("nationalite");
 	        e.appendChild(dom.createTextNode(newAdherent.getNationalite()));
@@ -172,88 +168,41 @@ public class ecritureXML {
 	        e.appendChild(dom.createTextNode(newAdherent.getAideMobil()));
 	        uneEntite.appendChild(e);
 	        
-	        //_____________________________
-	        
-	        //e = dom.createElement("adherent");
-	        //e.appendChild(rootEle);
-	        //test.appendChild(e);
-
-	        /*System.out.println("test : "+rootEle.getChildNodes().getLength());
-	        System.out.println("test : "+uneEntite.getChildNodes().getLength());
-	        //uneEntite2.appendChild(uneEntite.getChildNodes().item(0));
-	        rootEle.appendChild(dom.createElement(xmlFile.getChildNodes().item(0).getNodeName()));
-	        rootEle.getChildNodes().item(0).appendChild(dom.createElement(xmlFile.getChildNodes().item(0).getChildNodes().item(0).getNodeName()));
-	        System.out.println(rootEle.getChildNodes().item(0).getChildNodes().item(0).getNodeName());
-	        */
-	        
+	        //Transfert tout le contenue de xmlFile vers rootEle
+	        //On ne peut pas faire rootEle==xmlFile car il ne sont pas dans le meme document (la variable)
+	        //Dans un premiere temps on fait les node mere (qui possede un id)
 	        for (int i=0; i<xmlFile.getChildNodes().getLength(); i++) {
-	        	e = dom.createElement(xmlFile.getChildNodes().item(i).getNodeName());
-	        	e.setAttribute("id", intToString(i));
-	        	rootEle.appendChild(e);
+	        	e = dom.createElement(xmlFile.getChildNodes().item(i).getNodeName());//recupere le nom de la node mere et crea un nouveau element avec pour rootEle
+	        	e.setAttribute("id", intToString(i));//defini comme attribue de ce nouvelle element le meme que le node meme recup
+	        	rootEle.appendChild(e);//On l'ajoute
 		        
+	        	//Puis on traite le contenue des node mere, les node fille et leurs valeur (Ex : [Nom : Bories; Prenom : Bastien)
 		        for(int j=0;j<xmlFile.getChildNodes().item(i).getChildNodes().getLength();j++) {
+		        	//On cree un element a partir du nom de la node fille et l'ajoute dans la node mere i
 		        	rootEle.getChildNodes().item(i).appendChild(dom.createElement(xmlFile.getChildNodes().item(i).getChildNodes().item(j).getNodeName()));
+		        	//On ajoute a c'est element la valeur de la node fille
 		        	rootEle.getChildNodes().item(i).getChildNodes().item(j).appendChild(dom.createTextNode(xmlFile.getChildNodes().item(i).getChildNodes().item(j).getTextContent()));
 		        }
-		        
 	        }
-        	uneEntite.setAttribute("id", intToString(xmlFile.getChildNodes().getLength()));
+	        //En fois fini rootEle et xmlFile on le meme contenue mais pas le meme document (la variable)
+	        
+	        //Ajoute les information du formulaire a rootEle
+        	uneEntite.setAttribute("id", intToString(xmlFile.getChildNodes().getLength()));//Donne un identifient qui n'exsiste pas
 	        rootEle.appendChild(uneEntite);
-	        //rootEle = dom.createElement("adherent");
-	        
-	        
-	        //uneEntite2.setAttribute("id", "1");
-	        //rootEle.appendChild(uneEntite2);
-	        
-	        
-	        /*for (int j=1;j<4;j++) {
-	        	String nb = intToString(j);
-	        	e = dom.createElement("adherent");
-	        	e.setAttribute("id", nb);
-	        	rootEle.appendChild(e);
-	        	//try {
-	        	//	System.out.println(nb+" : "+rootEle.getElementsByTagName("test").item(j-1).getAttributes());
-	        	//}catch (Exception e1) {
-	        	//	System.out.println("err");
-	        	//}
-	        	
-		        //rootEle.getElementsByTagName("test").item(0).appendChild(dom.createTextNode("test"));
-		        
-		        for (int i=0; i<25 ; i++) {
-		        	String eName = uneEntite.getChildNodes().item(i).getNodeName();
-		        	//System.out.println(uneEntite.getChildNodes().getLength()+" "+i);
-		        	String eVal = uneEntite.getChildNodes().item(i).getChildNodes().item(0).getNodeValue();
-		        	//System.out.println(eVal);
-		        	rootEle.getElementsByTagName("adherent").item(j).appendChild(dom.createElement(eName));
-		        	rootEle.getElementsByTagName("adherent").item(j).getChildNodes().item(i).appendChild(dom.createTextNode(eVal));
-
-		        }
-	        }*/
-	        
-			//System.out.println(rootEle.getChildNodes().getLength());
-
-	        
-	        
-	        //rootEle.appendChild(dom.createElement("test"));
-	        
-	        //test pour verifier le contenue
-	        //for (int i=0; i<rootEle.getChildNodes().getLength() ; i++) {
-	        //	System.out.println(rootEle.getChildNodes().item(i).getChildNodes().item(0).getNodeValue());
-	        //}
-	        
 	        
 	        try {
 	            Transformer tr = TransformerFactory.newInstance().newTransformer();
+	            //Definie les propriete du fichier XML a cree
 	            tr.setOutputProperty(OutputKeys.INDENT, "yes");
 	            tr.setOutputProperty(OutputKeys.METHOD, "xml");
 	            tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-	            //tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, "roles.dtd");
 	            tr.setOutputProperty("{http://xml.Apache.org/xslt}indent-amount", "4");
 	            
 	            //test
 	            System.out.println("connexion fichier");
 	            
 	            // send DOM to file
+	            //Ecrase le fichier adherent.xml par un nouveau adherent.xml contenent rootEle 
 	            tr.transform(new DOMSource(rootEle), new StreamResult(new FileOutputStream("src/xml/adherent.xml")));
 	            
 	            //test
