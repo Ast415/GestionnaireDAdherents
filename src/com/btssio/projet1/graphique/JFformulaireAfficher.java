@@ -30,6 +30,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.util.regex.*;
+import java.awt.Toolkit;
 
 public class JFformulaireAfficher extends JFrame {
 
@@ -89,6 +90,7 @@ public class JFformulaireAfficher extends JFrame {
 	 * Create the frame.
 	 */
 	public JFformulaireAfficher() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(JFformulaireAfficher.class.getResource("/img/logoM1Icon.png")));
 		setTitle("Afficher un adhérent");
 		setResizable(false);
 		addWindowListener(new WindowAdapter() {//S'exécute comment ferme la fenêtre
