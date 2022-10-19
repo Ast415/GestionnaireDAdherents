@@ -19,7 +19,7 @@
         <pratique>Loisir</pratique>
         <lateralite>Droitier</lateralite>
         <categorie>Éveil</categorie>
-        <licenceFFE>0</licenceFFE>
+        <licenceFFE>1</licenceFFE>
         <assurance>0</assurance>
         <seancesTir>0</seancesTir>
         <reducFamille>0</reducFamille>
@@ -52,5 +52,59 @@
         <reducFamille>0</reducFamille>
         <reducFamilleEmeMembre>1</reducFamilleEmeMembre>
         <aideMobil>tst</aideMobil>
+    </adherent>
+    <adherent id="2">
+        <nom>fzsvzs</nom>
+        <nomDeNaissance>svsdvsv</nomDeNaissance>
+        <prenom>veve</prenom>
+        <dateDeNaissance>03/10/2004</dateDeNaissance>
+        <nationalite>refrfs</nationalite>
+        <paysDeNaissance>sfef</paysDeNaissance>
+        <genre>Masculin</genre>
+        <villeDeNaissance>sfess</villeDeNaissance>
+        <cp>31100</cp>
+        <ville>vsvsdffvfs</ville>
+        <adresse>vsrbsbfs</adresse>
+        <numeroDeTelephone1>710101010</numeroDeTelephone1>
+        <numeroDeTelephone2>710101010</numeroDeTelephone2>
+        <courriel>svdvbdf</courriel>
+        <nomPrenomLegal>fdbnfdnd</nomPrenomLegal>
+        <arme>Fleuret</arme>
+        <pratique>Loisir</pratique>
+        <lateralite>Droitier</lateralite>
+        <categorie>Éveil</categorie>
+        <licenceFFE>1</licenceFFE>
+        <assurance>0</assurance>
+        <seancesTir>0</seancesTir>
+        <reducFamille>0</reducFamille>
+        <reducFamilleEmeMembre>1</reducFamilleEmeMembre>
+        <aideMobil/>
+    </adherent>
+    <adherent id="3">
+        <nom>rswbgfbsb</nom>
+        <nomDeNaissance>fdsbbgf</nomDeNaissance>
+        <prenom>dfbdsbd</prenom>
+        <dateDeNaissance>29/01/2002</dateDeNaissance>
+        <nationalite>nbrtbnr</nationalite>
+        <paysDeNaissance>strhsb</paysDeNaissance>
+        <genre>Masculin</genre>
+        <villeDeNaissance>sdbdgd</villeDeNaissance>
+        <cp>31000</cp>
+        <ville>vdvdvd</ville>
+        <adresse>dbfgddb</adresse>
+        <numeroDeTelephone1>1010101010</numeroDeTelephone1>
+        <numeroDeTelephone2>1010101010</numeroDeTelephone2>
+        <courriel>fnrytrr</courriel>
+        <nomPrenomLegal>bebrtbtrbr</nomPrenomLegal>
+        <arme>Fleuret</arme>
+        <pratique>Loisir</pratique>
+        <lateralite>Droitier</lateralite>
+        <categorie>Éveil</categorie>
+        <licenceFFE>0</licenceFFE>
+        <assurance>0</assurance>
+        <seancesTir>0</seancesTir>
+        <reducFamille>0</reducFamille>
+        <reducFamilleEmeMembre>1</reducFamilleEmeMembre>
+        <aideMobil/>
     </adherent>
 </adherent>
