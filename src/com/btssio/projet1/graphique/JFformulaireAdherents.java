@@ -508,6 +508,7 @@ public class JFformulaireAdherents extends JFrame {
 		contentPane.add(lblAdhFFE);
 		
 		JCheckBox rdbtnAdhFFEO = new JCheckBox("Oui");
+		rdbtnAdhFFEO.setSelected(true);
 		bgrFFE.add(rdbtnAdhFFEO);
 		rdbtnAdhFFEO.setBounds(480, 372, 59, 21);
 		contentPane.add(rdbtnAdhFFEO);
