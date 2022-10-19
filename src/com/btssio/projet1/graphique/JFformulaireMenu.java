@@ -73,7 +73,7 @@ public class JFformulaireMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(JFformulaireAfficher.formEstOuvert==false) {//Si la formulaire adhérent est fermée 
 					try {
-						if (lectureXML.importationXMLadherent()==null) {
+						if (lectureXML.importationXMLadherent()==null) {//Empeche l'ouverture si il n'y a pas d'adherent dans le fichier
 							JOptionPane.showMessageDialog(contentPane,"Il n'y a pas d'ahderent enregistrer");
 						}else {
 							JFformulaireAfficher.formEstOuvert=true;//Alors on définit la variable comme true
@@ -94,5 +94,18 @@ public class JFformulaireMenu extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(10, 30, 414, 74);
 		contentPane.add(lblNewLabel);
+		
+		JButton btnAfficherLesClub = new JButton("Afficher les club");
+		btnAfficherLesClub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JFformulaireAfficheClub.formEstOuvert==false) {//Si la formulaire adhérent est fermée 
+					JFformulaireAfficheClub.formEstOuvert=true;
+					new JFformulaireAfficheClub().setVisible(true);
+				}
+			}
+		});
+		btnAfficherLesClub.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAfficherLesClub.setBounds(76, 173, 137, 32);
+		contentPane.add(btnAfficherLesClub);
 	}
 }

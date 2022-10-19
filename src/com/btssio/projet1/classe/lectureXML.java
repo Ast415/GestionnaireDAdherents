@@ -88,11 +88,12 @@ public class lectureXML {
 		return lesCategorie;
 	}
 	
+	//Permet de lire le fichier xml de adherent, mais retourne directement sous la meme forme dans une variable
 	public static Element importationBrutXMLadherent() throws ParserConfigurationException, SAXException{
 		
 		try {
 
-			File file = new File("src/xml/adherent.xml");
+			File file = new File("src/xml/adherent.xml");//choisi le fichier a lire
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document document = db.parse(file);
@@ -102,10 +103,9 @@ public class lectureXML {
 
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
-				//System.out.println("IBXML : "+nNode.getChildNodes().item(2).getTextContent());
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
-					//hé supprime les lignes vides
+					//supprime les lignes vides
 					for (int i=0;i<eElement.getChildNodes().getLength()-1;i++) {
 			        	if (eElement.getChildNodes().item(i).getNodeName()=="#text") {
 			        		eElement.removeChild(eElement.getChildNodes().item(i));
@@ -116,6 +116,7 @@ public class lectureXML {
 				        	}
 			        	}
 			        }
+					//supprime la derniere ligne vide
 					if(eElement.getLastChild().getNodeName()=="#text") {
 						eElement.removeChild(eElement.getLastChild());
 					}

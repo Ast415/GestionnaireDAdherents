@@ -41,6 +41,7 @@ public class JFformulaireAfficher extends JFrame {
 	public void init() {
 		
 		try {
+			//Importe les adherent du fichier xml et les place dans la liste lesAdherent
 			lesAdherent=lectureXML.importationXMLadherent();
 		} catch (ParserConfigurationException | SAXException e) {
 			// TODO Auto-generated catch block
