@@ -20,6 +20,8 @@ import java.awt.HeadlessException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class JFformulaireMenu extends JFrame {
 
@@ -45,6 +47,8 @@ public class JFformulaireMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public JFformulaireMenu() {
+		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Bastien\\Downloads\\logoM1Icon.png"));
 		setTitle("Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Quitte l'application.
 		setBounds(100, 100, 450, 300);
@@ -107,5 +111,18 @@ public class JFformulaireMenu extends JFrame {
 		btnAfficherLesClub.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAfficherLesClub.setBounds(76, 173, 137, 32);
 		contentPane.add(btnAfficherLesClub);
+		
+		JButton btnCalcule = new JButton("Statistique");
+		btnCalcule.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JFformulaireCalcule.formEstOuvert==false) {//Si la formulaire adhérent est fermée 
+					JFformulaireCalcule.formEstOuvert=true;
+					new JFformulaireCalcule().setVisible(true);
+				}
+			}
+		});
+		btnCalcule.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnCalcule.setBounds(223, 173, 137, 32);
+		contentPane.add(btnCalcule);
 	}
 }
