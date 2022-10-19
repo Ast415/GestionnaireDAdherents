@@ -94,5 +94,18 @@ public class JFformulaireMenu extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewLabel.setBounds(10, 30, 414, 74);
 		contentPane.add(lblNewLabel);
+		
+		JButton btnAfficherLesClub = new JButton("Afficher les club");
+		btnAfficherLesClub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(JFformulaireAfficheClub.formEstOuvert==false) {//Si la formulaire adhérent est fermée 
+					JFformulaireAfficheClub.formEstOuvert=true;
+					new JFformulaireAfficheClub().setVisible(true);
+				}
+			}
+		});
+		btnAfficherLesClub.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAfficherLesClub.setBounds(76, 173, 137, 32);
+		contentPane.add(btnAfficherLesClub);
 	}
 }
