@@ -46,6 +46,7 @@ import java.util.List;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
+import java.awt.Toolkit;
 
 public class JFformulaireAdherents extends JFrame {
 
@@ -259,6 +260,7 @@ public class JFformulaireAdherents extends JFrame {
 	 * Create the frame.
 	 */
 	public JFformulaireAdherents() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(JFformulaireAdherents.class.getResource("/img/logoM1Icon.png")));
 		addWindowListener(new WindowAdapter() {//S'exécute comment ferme la fenêtre
 			@Override
 			public void windowClosed(WindowEvent e) {
