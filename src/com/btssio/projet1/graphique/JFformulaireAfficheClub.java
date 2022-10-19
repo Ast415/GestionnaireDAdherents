@@ -28,14 +28,14 @@ public class JFformulaireAfficheClub extends JFrame {
 
 	protected static boolean formEstOuvert = false;
 	private JPanel contentPane;
-	int id = 0;
+	int id = 2;
 	private ArrayList<Club> lesClub = new ArrayList<Club>();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField nameJtext;
+	private JTextField adresseJtext;
+	private JTextField contactJtext;
+	private JTextField telJtext;
+	private JTextField mailJtext;
+	private JTextField siteJtext;
 	
 	
 	public void init() {
@@ -68,12 +68,12 @@ public class JFformulaireAfficheClub extends JFrame {
 	}
 
 	public void miseAjour() {
-		textField.setText(lesClub.get(id).getNom());
-		textField_1.setText(lesClub.get(id).getAdresse());
-		textField_2.setText(lesClub.get(id).getContact());
-		textField_3.setText(lesClub.get(id).getTel());
-		textField_4.setText(lesClub.get(id).getMail());
-		textField_5.setText(lesClub.get(id).getSite());
+		nameJtext.setText(lesClub.get(id).getNom());
+		adresseJtext.setText(lesClub.get(id).getAdresse());
+		contactJtext.setText(lesClub.get(id).getContact());
+		telJtext.setText(lesClub.get(id).getTel());
+		mailJtext.setText(lesClub.get(id).getMail());
+		siteJtext.setText(lesClub.get(id).getSite());
 		
 	}
 	
@@ -83,7 +83,6 @@ public class JFformulaireAfficheClub extends JFrame {
 	public JFformulaireAfficheClub() {
 		
 		init();
-		miseAjour();
 		
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -99,88 +98,90 @@ public class JFformulaireAfficheClub extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Nom :");
-		lblNewLabel.setBounds(10, 11, 86, 14);
-		contentPane.add(lblNewLabel);
+		JLabel nom = new JLabel("Nom :");
+		nom.setBounds(10, 11, 86, 14);
+		contentPane.add(nom);
 		
-		JLabel lblNewLabel_1 = new JLabel("adresse :");
-		lblNewLabel_1.setBounds(10, 36, 86, 14);
-		contentPane.add(lblNewLabel_1);
+		JLabel adresse = new JLabel("adresse :");
+		adresse.setBounds(10, 36, 86, 14);
+		contentPane.add(adresse);
 		
-		JLabel lblNewLabel_2 = new JLabel("contact :");
-		lblNewLabel_2.setBounds(10, 61, 86, 14);
-		contentPane.add(lblNewLabel_2);
+		JLabel contact = new JLabel("contact :");
+		contact.setBounds(10, 61, 86, 14);
+		contentPane.add(contact);
 		
-		JLabel lblNewLabel_3 = new JLabel("n° de Telephone :");
-		lblNewLabel_3.setBounds(10, 86, 86, 14);
-		contentPane.add(lblNewLabel_3);
+		JLabel telephone = new JLabel("n° de Telephone :");
+		telephone.setBounds(10, 86, 86, 14);
+		contentPane.add(telephone);
 		
-		JLabel lblNewLabel_4 = new JLabel("@ mail :");
-		lblNewLabel_4.setBounds(10, 111, 86, 14);
-		contentPane.add(lblNewLabel_4);
+		JLabel mail = new JLabel("@ mail :");
+		mail.setBounds(10, 111, 86, 14);
+		contentPane.add(mail);
 		
-		JLabel lblNewLabel_5 = new JLabel("site web :");
-		lblNewLabel_5.setBounds(10, 136, 86, 14);
-		contentPane.add(lblNewLabel_5);
+		JLabel siteWeb = new JLabel("site web :");
+		siteWeb.setBounds(10, 136, 86, 14);
+		contentPane.add(siteWeb);
 		
 		JButton btnNewButton = new JButton("precedent");
-		btnNewButton.setBounds(10, 161, 86, 23);
+		btnNewButton.setBounds(10, 161, 98, 23);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (id > 0) {
 					id = id - 1;
 				}
+				miseAjour();
 			}
 		});
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("suivan");
 		btnNewButton_1.setBounds(220, 161, 86, 23);
-		btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (id < lesClub.size()) {
+				if (id < lesClub.size()-1) {
 					id = id + 1;
 				}
+				miseAjour();
 			}
 		});
 		contentPane.add(btnNewButton_1);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBounds(106, 8, 200, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		nameJtext = new JTextField("");
+		nameJtext.setEditable(false);
+		nameJtext.setBounds(106, 8, 200, 20);
+		contentPane.add(nameJtext);
+		nameJtext.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(106, 33, 200, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		adresseJtext = new JTextField("");
+		adresseJtext.setEditable(false);
+		adresseJtext.setBounds(106, 33, 200, 20);
+		contentPane.add(adresseJtext);
+		adresseJtext.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setBounds(106, 58, 200, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		contactJtext = new JTextField("");
+		contactJtext.setEditable(false);
+		contactJtext.setBounds(106, 58, 200, 20);
+		contentPane.add(contactJtext);
+		contactJtext.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		textField_3.setBounds(106, 83, 200, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		telJtext = new JTextField("");
+		telJtext.setEditable(false);
+		telJtext.setBounds(106, 83, 200, 20);
+		contentPane.add(telJtext);
+		telJtext.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		textField_4.setBounds(106, 108, 200, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		mailJtext = new JTextField("");
+		mailJtext.setEditable(false);
+		mailJtext.setBounds(106, 108, 200, 20);
+		contentPane.add(mailJtext);
+		mailJtext.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setEditable(false);
-		textField_5.setBounds(106, 133, 200, 20);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
+		siteJtext = new JTextField("");
+		siteJtext.setEditable(false);
+		siteJtext.setBounds(106, 133, 200, 20);
+		contentPane.add(siteJtext);
+		siteJtext.setColumns(10);
 		
-		init();
+		miseAjour();
 	}
 }
