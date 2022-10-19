@@ -99,7 +99,34 @@
         <arme>Fleuret</arme>
         <pratique>Loisir</pratique>
         <lateralite>Droitier</lateralite>
-        <categorie>Benjamins</categorie>
+        <categorie>Éveil</categorie>
+        <licenceFFE>0</licenceFFE>
+        <assurance>0</assurance>
+        <seancesTir>0</seancesTir>
+        <reducFamille>0</reducFamille>
+        <reducFamilleEmeMembre>1</reducFamilleEmeMembre>
+        <aideMobil/>
+    </adherent>
+    <adherent id="4">
+        <nom>BORIES</nom>
+        <nomDeNaissance>BORIES</nomDeNaissance>
+        <prenom>Bastien</prenom>
+        <dateDeNaissance>29/01/2002</dateDeNaissance>
+        <nationalite>Français</nationalite>
+        <paysDeNaissance>France</paysDeNaissance>
+        <genre>Masculin</genre>
+        <villeDeNaissance>Castres</villeDeNaissance>
+        <cp>31400</cp>
+        <ville>Toulouse</ville>
+        <adresse>118</adresse>
+        <numeroDeTelephone1>1010101010</numeroDeTelephone1>
+        <numeroDeTelephone2>1010101010</numeroDeTelephone2>
+        <courriel>test@mail.com</courriel>
+        <nomPrenomLegal/>
+        <arme>Sabre</arme>
+        <pratique>Compétition</pratique>
+        <lateralite>Droitier</lateralite>
+        <categorie>Juniors</categorie>
         <licenceFFE>0</licenceFFE>
         <assurance>0</assurance>
         <seancesTir>0</seancesTir>
