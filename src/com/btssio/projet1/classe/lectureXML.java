@@ -2,6 +2,7 @@ package com.btssio.projet1.classe;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -92,8 +93,21 @@ public class lectureXML {
 	public static Element importationBrutXMLadherent() throws ParserConfigurationException, SAXException{
 		
 		try {
-
-			File file = new File("src/xml/adherent.xml");//choisi le fichier a lire
+			String cheminActuel = "";
+			try {
+				String jarPath = lectureXML.class
+				          .getProtectionDomain()
+				          .getCodeSource()
+				          .getLocation()
+				          .toURI()
+				          .getPath();
+				cheminActuel = jarPath;
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			File file = new File(cheminActuel+"/xml/adherent.xml");
+			//File file = new File("C:\\Users\\"+System.getProperty("user.name")+"\\AppData\\Roaming\\SaveGestionAdh\\adherent.xml");
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document document = db.parse(file);
@@ -141,8 +155,21 @@ public class lectureXML {
 		boolean licenceFFE, assurance, seancesTir, reducFamille;
 
 		try {
-
-			File file = new File("src/xml/adherent.xml");
+			String cheminActuel = "";
+			try {
+				String jarPath = lectureXML.class
+				          .getProtectionDomain()
+				          .getCodeSource()
+				          .getLocation()
+				          .toURI()
+				          .getPath();
+				cheminActuel = jarPath;
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			File file = new File(cheminActuel+"/xml/adherent.xml");
+			//File file = new File("C:\\Users\\"+System.getProperty("user.name")+"\\AppData\\Roaming\\SaveGestionAdh\\adherent.xml");
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document document = db.parse(file);
@@ -224,6 +251,22 @@ public class lectureXML {
 	}
 	
 	public static void main(String[]args) throws ParserConfigurationException, SAXException {
+		/*try {
+			String jarPath = lectureXML.class
+			          .getProtectionDomain()
+			          .getCodeSource()
+			          .getLocation()
+			          .toURI()
+			          .getPath();
+			System.out.println(jarPath+"xml/adherent.xml");
+			File f = new File(jarPath+"xml/adherent.xml");
+			if(f.exists() && !f.isDirectory()) { 
+				System.out.println("Oui");
+			}
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 		importationXMLadherent();
 	}
 

@@ -2,8 +2,10 @@ package com.btssio.projet1.classe;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.*; 
 import javax.xml.transform.*; 
 import javax.xml.transform.dom.*; 
@@ -44,6 +46,21 @@ public class ecritureXML {
 	    // instance of a DocumentBuilderFactory
 	    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 	    try {
+			String cheminActuel = "";
+			try {
+				String jarPath = ecritureXML.class
+				          .getProtectionDomain()
+				          .getCodeSource()
+				          .getLocation()
+				          .toURI()
+				          .getPath();
+				cheminActuel = jarPath;
+			} catch (URISyntaxException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	    	
+	    	
 	        // use factory to get an instance of document builder
 	        DocumentBuilder db = dbf.newDocumentBuilder();
 	        // create instance of DOM
@@ -203,7 +220,8 @@ public class ecritureXML {
 	            
 	            // send DOM to file
 	            //Ecrase le fichier adherent.xml par un nouveau adherent.xml contenent rootEle 
-	            tr.transform(new DOMSource(rootEle), new StreamResult(new FileOutputStream("src/xml/adherent.xml")));
+	            tr.transform(new DOMSource(rootEle), new StreamResult(new FileOutputStream(cheminActuel+"/xml/adherent.xml")));
+	            //tr.transform(new DOMSource(rootEle), new StreamResult(new FileOutputStream("C:\\Users\\"+System.getProperty("user.name")+"\\AppData\\Roaming\\SaveGestionAdh\\adherent.xml")));
 	            
 	            //test
 	    	    System.out.println("connexion ok");
