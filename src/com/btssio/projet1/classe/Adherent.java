@@ -270,5 +270,42 @@ public class Adherent {
 		this.reducFamilleEmeMembre = reducFamilleEmeMembre;
 		this.aideMobil = aideMobil;
 	}
+	
+	public int calculPrix() {
+		// definition des variable
+		String[] annee = this.getDateDeNaissance().split("/"); //difinition d'une liste par split /
+		int année, tarif;
+		
+		// recuperation de l'année (definis jj/mm/aaaa)
+		for (String anne : annee) {
+			année = Integer.parseInt(anne);
+        }
+		
+		// calcule du tarif sans licance par apor a l'année
+		if (année > 2012) {
+			tarif = 190;
+		} else {
+			if (année > 2003) {
+				tarif = 220;
+			} else { 
+				tarif = 255;
+			}
+		}
+		
+		// ajout de la lissance a pori si il y a
+		if (this.getLicenceFFE()) {
+			if (année > 2016) {
+				tarif = tarif + 28;
+			} else {
+				if (année > 20014) {
+					tarif = tarif + 45;
+				} else { 
+					tarif = tarif + 55;
+				}
+			}
+		}
+		
+		return tarif;
+	}
 
 }
