@@ -268,7 +268,7 @@ public class JFformulaireAdherents extends JFrame {
 		setResizable(false);
 		setTitle("Ajouter un adhérent");
 		setDefaultCloseOperation(JFformulaireAdherents.DISPOSE_ON_CLOSE);//Supprime l'objet frame, mais maintient l'exécution de l'application.
-		setBounds(100, 100, 629, 671);
+		setBounds(100, 100, 627, 671);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -439,7 +439,7 @@ public class JFformulaireAdherents extends JFrame {
 		
 		JLabel lblAdhNomPrenomLeg = new JLabel("Nom et Prenom du responsable légal :");
 		lblAdhNomPrenomLeg.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblAdhNomPrenomLeg.setBounds(10, 370, 590, 19);
+		lblAdhNomPrenomLeg.setBounds(10, 370, 295, 19);
 		contentPane.add(lblAdhNomPrenomLeg);
 		
 		txtfAdhNomPrenomLeg = new JTextField();
@@ -500,19 +500,19 @@ public class JFformulaireAdherents extends JFrame {
 		rdbtnAdhLateraliteG.setBounds(453, 463, 126, 21);
 		contentPane.add(rdbtnAdhLateraliteG);
 		
-		JLabel lblAdhFFE = new JLabel("Licence FFE :");
+		JLabel lblAdhFFE = new JLabel("|          Licence FFE :");
 		lblAdhFFE.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblAdhFFE.setBounds(988, 90, 91, 19);
+		lblAdhFFE.setBounds(309, 371, 165, 19);
 		contentPane.add(lblAdhFFE);
 		
 		JCheckBox rdbtnAdhFFEO = new JCheckBox("Oui");
 		bgrFFE.add(rdbtnAdhFFEO);
-		rdbtnAdhFFEO.setBounds(1085, 91, 59, 21);
+		rdbtnAdhFFEO.setBounds(480, 372, 59, 21);
 		contentPane.add(rdbtnAdhFFEO);
 		
 		JCheckBox rdbtnAdhFFEN = new JCheckBox("Non");
 		bgrFFE.add(rdbtnAdhFFEN);
-		rdbtnAdhFFEN.setBounds(1146, 91, 59, 21);
+		rdbtnAdhFFEN.setBounds(541, 372, 59, 21);
 		contentPane.add(rdbtnAdhFFEN);
 		
 		JLabel lblAdhAssurance = new JLabel("Assurance :");
@@ -521,11 +521,13 @@ public class JFformulaireAdherents extends JFrame {
 		contentPane.add(lblAdhAssurance);
 		
 		JCheckBox rdbtnAdhAssurenceO = new JCheckBox("Oui");
+		rdbtnAdhAssurenceO.setEnabled(false);
 		bgrAssurence.add(rdbtnAdhAssurenceO);
 		rdbtnAdhAssurenceO.setBounds(1085, 116, 59, 21);
 		contentPane.add(rdbtnAdhAssurenceO);
 		
 		JCheckBox rdbtnAdhAssuranceN = new JCheckBox("Non");
+		rdbtnAdhAssuranceN.setEnabled(false);
 		bgrAssurence.add(rdbtnAdhAssuranceN);
 		rdbtnAdhAssuranceN.setBounds(1146, 116, 59, 21);
 		contentPane.add(rdbtnAdhAssuranceN);
@@ -536,11 +538,13 @@ public class JFformulaireAdherents extends JFrame {
 		contentPane.add(lblAdhReducFamille);
 		
 		JCheckBox rdbtnAdhReducFO = new JCheckBox("Oui");
+		rdbtnAdhReducFO.setEnabled(false);
 		bgrReducFamille.add(rdbtnAdhReducFO);
 		rdbtnAdhReducFO.setBounds(1144, 187, 59, 21);
 		contentPane.add(rdbtnAdhReducFO);
 		
 		JCheckBox rdbtnAdhReducFN = new JCheckBox("Non");
+		rdbtnAdhReducFN.setEnabled(false);
 		bgrReducFamille.add(rdbtnAdhReducFN);
 		rdbtnAdhReducFN.setBounds(1205, 187, 59, 21);
 		contentPane.add(rdbtnAdhReducFN);
@@ -551,6 +555,7 @@ public class JFformulaireAdherents extends JFrame {
 		contentPane.add(lblAdhReducFText);
 		
 		JComboBox cmbAdhReducFamille = new JComboBox();
+		cmbAdhReducFamille.setEnabled(false);
 		cmbAdhReducFamille.setModel(new DefaultComboBoxModel(new String[] {"Rien", "2e adhérent", "3e adhérent ou plus"}));
 		cmbAdhReducFamille.setBounds(1104, 217, 160, 21);
 		contentPane.add(cmbAdhReducFamille);
@@ -562,12 +567,14 @@ public class JFformulaireAdherents extends JFrame {
 		contentPane.add(lblAdhSeancesTir);
 		
 		JCheckBox rdbtnAdhSeanceTirO = new JCheckBox("Oui");
+		rdbtnAdhSeanceTirO.setEnabled(false);
 		bgrSeanceTir.add(rdbtnAdhSeanceTirO);
 		rdbtnAdhSeanceTirO.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnAdhSeanceTirO.setBounds(674, 211, 93, 21);
 		contentPane.add(rdbtnAdhSeanceTirO);
 		
 		JCheckBox rdbtnAdhSeanceTirN = new JCheckBox("Non");
+		rdbtnAdhSeanceTirN.setEnabled(false);
 		bgrSeanceTir.add(rdbtnAdhSeanceTirN);
 		rdbtnAdhSeanceTirN.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnAdhSeanceTirN.setBounds(793, 211, 93, 21);
@@ -585,6 +592,7 @@ public class JFformulaireAdherents extends JFrame {
 		contentPane.add(lblAdhAideMobil);
 		
 		JTextArea txtaAdhAideMobil = new JTextArea();
+		txtaAdhAideMobil.setEnabled(false);
 		txtaAdhAideMobil.setBounds(673, 329, 591, 173);
 		contentPane.add(txtaAdhAideMobil);
 		
@@ -598,6 +606,7 @@ public class JFformulaireAdherents extends JFrame {
 					String Pratique;
 					String Lateralite;
 					String Categorie=(String) cmbAdhCategorie.getSelectedItem();
+					boolean FFE;
 					
 					//On détermine le résultat des boutons sélectionnés 
 					if (rdbtnAdhGenreM.isSelected()) {
@@ -628,15 +637,21 @@ public class JFformulaireAdherents extends JFrame {
 						Lateralite = "Gaucher";
 					}
 					
+					if (rdbtnAdhFFEO.isSelected()) {
+						FFE = true;
+					}else {
+						FFE = false;
+					}
+					
 					//Création de l'adhérent à partir du formulaire 
 					//NE PAS SUPPRIMER version finale de l'instanciaition de adhérent
 					Adherent adh = new Adherent(
 							txtfAdhNom.getText(),
 							txtfAdhNomNaiss.getText(),
 							txtfAdhPrenom.getText(),
-							txtfAdhDateNaissJ.getSelectedText()+"/"
-							+txtfAdhDateNaissM.getSelectedText()+"/"
-							+txtfAdhDateNaissA.getSelectedText(),
+							txtfAdhDateNaissJ.getText()+"/"
+							+txtfAdhDateNaissM.getText()+"/"
+							+txtfAdhDateNaissA.getText(),
 							txtfAdhNationalite.getText(),
 							txtfAdhPaysNaiss.getText(),
 							Genre,
@@ -652,7 +667,7 @@ public class JFformulaireAdherents extends JFrame {
 							Pratique,
 							Lateralite,
 							Categorie,
-							false,
+							FFE,
 							false,
 							false,
 							false,

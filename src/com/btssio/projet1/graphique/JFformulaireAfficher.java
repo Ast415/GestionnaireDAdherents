@@ -50,6 +50,14 @@ public class JFformulaireAfficher extends JFrame {
 	}
 	
 	
+	public String booleanVersOuiNon (boolean unEtat) {
+		if(unEtat==true) {
+			return "Oui";
+		}else {
+			return "Non";
+		}
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -110,7 +118,8 @@ public class JFformulaireAfficher extends JFrame {
 								+ "\nArme : "+lesAdherent.get(idAdherent).getArme()
 								+ "\nPratique : "+lesAdherent.get(idAdherent).getPratique()
 								+ "\nLatéralité : "+lesAdherent.get(idAdherent).getLateralité()
-								+ "\nCatégotrie : "+lesAdherent.get(idAdherent).getCategorie());
+								+ "\nCatégotrie : "+lesAdherent.get(idAdherent).getCategorie()
+								+ "\nLicence : "+booleanVersOuiNon(lesAdherent.get(idAdherent).getLicenceFFE()));
 					}else {
 						txtpAffResultat.setForeground(new Color(213, 26, 0));//Hé mets la couleur du texte en rouge 
 						txtpAffResultat.setText("Cet identifiant n'est pas reconnu, veuillez essayer un autre identifiant ");
