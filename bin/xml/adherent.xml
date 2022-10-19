@@ -45,7 +45,7 @@
         <arme>Fleuret</arme>
         <pratique>Loisir</pratique>
         <lateralite>Droitier</lateralite>
-        <categorie>Éveil</categorie>
+        <categorie>Pupilles</categorie>
         <licenceFFE>0</licenceFFE>
         <assurance>0</assurance>
         <seancesTir>0</seancesTir>
@@ -72,7 +72,7 @@
         <arme>Fleuret</arme>
         <pratique>Loisir</pratique>
         <lateralite>Droitier</lateralite>
-        <categorie>Éveil</categorie>
+        <categorie>Cadets</categorie>
         <licenceFFE>1</licenceFFE>
         <assurance>0</assurance>
         <seancesTir>0</seancesTir>
@@ -99,7 +99,7 @@
         <arme>Fleuret</arme>
         <pratique>Loisir</pratique>
         <lateralite>Droitier</lateralite>
-        <categorie>Éveil</categorie>
+        <categorie>Benjamins</categorie>
         <licenceFFE>0</licenceFFE>
         <assurance>0</assurance>
         <seancesTir>0</seancesTir>
