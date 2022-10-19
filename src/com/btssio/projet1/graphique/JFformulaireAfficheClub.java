@@ -23,12 +23,14 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Toolkit;
 
 public class JFformulaireAfficheClub extends JFrame {
 
 	protected static boolean formEstOuvert = false;
 	private JPanel contentPane;
-	int id = 2;
+	int id = 0;
 	private ArrayList<Club> lesClub = new ArrayList<Club>();
 	private JTextField nameJtext;
 	private JTextField adresseJtext;
@@ -81,6 +83,9 @@ public class JFformulaireAfficheClub extends JFrame {
 	 * Create the frame.
 	 */
 	public JFformulaireAfficheClub() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(JFformulaireAfficheClub.class.getResource("/img/logoM1Icon.png")));
+		setResizable(false);
+		setTitle("Menu informatif des clubs");
 		
 		init();
 		
@@ -91,7 +96,7 @@ public class JFformulaireAfficheClub extends JFrame {
 			}
 		});
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 449, 302);
+		setBounds(100, 100, 449, 328);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -99,31 +104,38 @@ public class JFformulaireAfficheClub extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel nom = new JLabel("Nom :");
-		nom.setBounds(10, 11, 86, 14);
+		nom.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		nom.setBounds(10, 88, 127, 14);
 		contentPane.add(nom);
 		
-		JLabel adresse = new JLabel("adresse :");
-		adresse.setBounds(10, 36, 86, 14);
+		JLabel adresse = new JLabel("Adresse :");
+		adresse.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		adresse.setBounds(10, 113, 127, 14);
 		contentPane.add(adresse);
 		
-		JLabel contact = new JLabel("contact :");
-		contact.setBounds(10, 61, 86, 14);
+		JLabel contact = new JLabel("Contact :");
+		contact.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		contact.setBounds(10, 138, 127, 14);
 		contentPane.add(contact);
 		
-		JLabel telephone = new JLabel("n° de Telephone :");
-		telephone.setBounds(10, 86, 86, 14);
+		JLabel telephone = new JLabel("N° de Telephone :");
+		telephone.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		telephone.setBounds(10, 163, 127, 14);
 		contentPane.add(telephone);
 		
-		JLabel mail = new JLabel("@ mail :");
-		mail.setBounds(10, 111, 86, 14);
+		JLabel mail = new JLabel("Email :");
+		mail.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		mail.setBounds(10, 188, 127, 14);
 		contentPane.add(mail);
 		
-		JLabel siteWeb = new JLabel("site web :");
-		siteWeb.setBounds(10, 136, 86, 14);
+		JLabel siteWeb = new JLabel("Site web :");
+		siteWeb.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		siteWeb.setBounds(10, 213, 127, 14);
 		contentPane.add(siteWeb);
 		
-		JButton btnNewButton = new JButton("precedent");
-		btnNewButton.setBounds(10, 161, 98, 23);
+		JButton btnNewButton = new JButton("Precedent");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton.setBounds(114, 250, 98, 31);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (id > 0) {
@@ -134,8 +146,9 @@ public class JFformulaireAfficheClub extends JFrame {
 		});
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("suivan");
-		btnNewButton_1.setBounds(220, 161, 86, 23);
+		JButton btnNewButton_1 = new JButton("Suivant");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButton_1.setBounds(222, 250, 98, 31);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (id < lesClub.size()-1) {
@@ -147,40 +160,52 @@ public class JFformulaireAfficheClub extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		nameJtext = new JTextField("");
+		nameJtext.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		nameJtext.setEditable(false);
-		nameJtext.setBounds(106, 8, 200, 20);
+		nameJtext.setBounds(147, 85, 276, 20);
 		contentPane.add(nameJtext);
 		nameJtext.setColumns(10);
 		
 		adresseJtext = new JTextField("");
+		adresseJtext.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		adresseJtext.setEditable(false);
-		adresseJtext.setBounds(106, 33, 200, 20);
+		adresseJtext.setBounds(147, 110, 276, 20);
 		contentPane.add(adresseJtext);
 		adresseJtext.setColumns(10);
 		
 		contactJtext = new JTextField("");
+		contactJtext.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		contactJtext.setEditable(false);
-		contactJtext.setBounds(106, 58, 200, 20);
+		contactJtext.setBounds(147, 135, 276, 20);
 		contentPane.add(contactJtext);
 		contactJtext.setColumns(10);
 		
 		telJtext = new JTextField("");
+		telJtext.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		telJtext.setEditable(false);
-		telJtext.setBounds(106, 83, 200, 20);
+		telJtext.setBounds(147, 160, 276, 20);
 		contentPane.add(telJtext);
 		telJtext.setColumns(10);
 		
 		mailJtext = new JTextField("");
+		mailJtext.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		mailJtext.setEditable(false);
-		mailJtext.setBounds(106, 108, 200, 20);
+		mailJtext.setBounds(147, 185, 276, 20);
 		contentPane.add(mailJtext);
 		mailJtext.setColumns(10);
 		
 		siteJtext = new JTextField("");
+		siteJtext.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		siteJtext.setEditable(false);
-		siteJtext.setBounds(106, 133, 200, 20);
+		siteJtext.setBounds(147, 210, 276, 20);
 		contentPane.add(siteJtext);
 		siteJtext.setColumns(10);
+		
+		JLabel lblMenuInformatifDes = new JLabel("Menu informatif des clubs");
+		lblMenuInformatifDes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMenuInformatifDes.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblMenuInformatifDes.setBounds(10, 11, 413, 66);
+		contentPane.add(lblMenuInformatifDes);
 		
 		miseAjour();
 	}
