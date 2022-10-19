@@ -9,6 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import com.btssio.projet1.classe.ecritureXML;
 import com.btssio.projet1.classe.lectureXML;
 
 import javax.swing.JButton;
@@ -22,6 +23,12 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.net.URISyntaxException;
 
 public class JFformulaireMenu extends JFrame {
 
@@ -47,6 +54,31 @@ public class JFformulaireMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public JFformulaireMenu() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent e) {
+				/*String cheminActuel = "";
+				try {
+					String jarPath = ecritureXML.class
+					          .getProtectionDomain()
+					          .getCodeSource()
+					          .getLocation()
+					          .toURI()
+					          .getPath();
+					cheminActuel = jarPath;
+					JOptionPane.showMessageDialog(contentPane,cheminActuel+"/xml/adherent.xml");
+					File f = new File(cheminActuel+"/xml/adherent.xml");
+					if(f.exists() && !f.isDirectory()) { 
+						JOptionPane.showMessageDialog(contentPane,"Oui");
+					}else {
+						JOptionPane.showMessageDialog(contentPane,"Non");
+					}
+				} catch (URISyntaxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}*/
+			}
+		});
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Bastien\\Downloads\\logoM1Icon.png"));
 		setTitle("Menu");
@@ -116,8 +148,17 @@ public class JFformulaireMenu extends JFrame {
 		btnCalcule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JFformulaireCalcule.formEstOuvert==false) {//Si la formulaire adhérent est fermée 
-					JFformulaireCalcule.formEstOuvert=true;
-					new JFformulaireCalcule().setVisible(true);
+					try {
+						if (lectureXML.importationXMLadherent()==null) {//Empeche l'ouverture si il n'y a pas d'adherent dans le fichier
+							JOptionPane.showMessageDialog(contentPane,"Il n'y a pas d'ahderent enregistrer");
+						}else {
+							JFformulaireCalcule.formEstOuvert=true;
+							new JFformulaireCalcule().setVisible(true);
+						}
+					} catch (HeadlessException | ParserConfigurationException | SAXException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
