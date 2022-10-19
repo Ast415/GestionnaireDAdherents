@@ -159,22 +159,22 @@ public class lectureXML {
 						return null;
 					}
 
-					if (eElement.getElementsByTagName("licenceFFE").item(0).getTextContent() == "1") {
+					if (eElement.getElementsByTagName("licenceFFE").item(0).getTextContent().equals("1")) {
 						licenceFFE = true;
 					} else {
 						licenceFFE = false;
 					}
-					if (eElement.getElementsByTagName("assurance").item(0).getTextContent() == "1") {
+					if (eElement.getElementsByTagName("assurance").item(0).getTextContent().equals("1")) {
 						assurance = true;
 					} else {
 						assurance = false;
 					}
-					if (eElement.getElementsByTagName("seancesTir").item(0).getTextContent() == "1") {
+					if (eElement.getElementsByTagName("seancesTir").item(0).getTextContent().equals("1")) {
 						seancesTir = true;
 					} else {
 						seancesTir = false;
 					}
-					if (eElement.getElementsByTagName("reducFamille").item(0).getTextContent() == "1") {
+					if (eElement.getElementsByTagName("reducFamille").item(0).getTextContent().equals("1")) {
 						reducFamille = true;
 					} else {
 						reducFamille = false;
