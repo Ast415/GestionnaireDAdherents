@@ -274,7 +274,7 @@ public class Adherent {
 	public int calculPrix() {
 		// definition des variable
 		String[] annee = this.getDateDeNaissance().split("/"); //difinition d'une liste par split /
-		int année, tarif;
+		int année = 0, tarif;
 		
 		// recuperation de l'année (definis jj/mm/aaaa)
 		for (String anne : annee) {
