@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <categories>
        <categorie id="1">
-            <nom>Eveil</nom>
+            <nom>Éveil</nom>
 			<code>M5</code>
             <annee_min>2017</annee_min>
 			<annee_max>2022</annee_max>
